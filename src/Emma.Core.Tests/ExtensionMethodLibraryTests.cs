@@ -17,8 +17,8 @@ namespace Emma.Core.Tests
         {
             public TestSource(IEnumerable<ExtensionMethod> methods)
             {
-                this.Methods = methods;
-                this.LastUpdated = DateTime.Now;
+                Methods = methods;
+                LastUpdated = DateTime.Now;
             }
         }
         [OneTimeSetUp]

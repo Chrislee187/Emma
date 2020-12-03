@@ -22,7 +22,7 @@ namespace Emma.Core.Tests
                 Connection = { Credentials = new Octokit.Credentials(Credentials.AppKey()) }
             };
 
-            _github = new GithubRepositoryModel.Github(client);
+            _github = new Github(client);
 
         }
 
