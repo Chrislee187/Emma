@@ -15,7 +15,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Emma.Core\Emma.Core.csproj" />
-    <ProjectReference Include="..\GithubRepositoryModel\GithubRepositoryModel.csproj" />
   </ItemGroup>
 
 </Project>
