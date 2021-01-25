@@ -13,7 +13,8 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <ComboBox Width="Auto" IsEditable="True" x:Name="SearchByName" Text="Method Name Search">
+            <ComboBox Width="Auto" IsEditable="True" x:Name="SearchByName" Text="Method Name Search" 
+                      Background="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}">
                 <ComboBoxItem>string</ComboBoxItem>
                 <ComboBoxItem>int</ComboBoxItem>
                 <ComboBoxItem>double</ComboBoxItem>
@@ -36,14 +37,17 @@
 
             <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" Grid.ColumnSpan="2">
                 <!-- <TextBlock Foreground="White">Extending Type</TextBlock> -->
-                <TextBox x:Name="SearchByExtendingType" Text="Extending Type Search" TextAlignment="Center"/>
+                <ComboBox Width="Auto" IsEditable="True" x:Name="SearchByExtendingType" Text="Extending Type Search" 
+                          Background="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}">
+                </ComboBox>
             </StackPanel>
             <StackPanel Grid.Column="2" Grid.Row="0" Orientation="Vertical" HorizontalAlignment="Stretch">
                 <!-- <TextBlock>Return Type</TextBlock> -->
-                <TextBox  x:Name="SearchByReturnType" Text="Return Type Search" TextAlignment="Center"/>
+                <ComboBox Width="Auto" IsEditable="True" x:Name="SearchByReturnType" Text="Return Type Search">
+                </ComboBox>
             </StackPanel>
             <Grid Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3">
-                <ListBox>
+                <ListBox Background="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}">
                     <ListBoxItem>int string.ToInt()</ListBoxItem>
                     <ListBoxItem>int string.ToInt()</ListBoxItem>
                     <ListBoxItem IsSelected="True">int string.ToInt()</ListBoxItem>
@@ -52,23 +56,32 @@
                 </ListBox>
             </Grid>
             <Grid Grid.Row="2" Grid.ColumnSpan="3">
-                <TextBlock FontFamily="Consolas" Cursor="None" FontSize="16" Foreground="Gray" ScrollViewer.CanContentScroll="True">
-                    1. Code Preview<LineBreak/>
-                    2. Code Preview<LineBreak/>
-                    3. Code Preview<LineBreak/>
-                    4. Code Preview<LineBreak/>
-                    5. Code Preview<LineBreak/>
-                    6. Code Preview<LineBreak/>
-                    7. Code Preview<LineBreak/>
-                    8. Code Preview<LineBreak/>
-                    9. Code Preview<LineBreak/>
-                    10.Code Preview
-                    Code Preview
-                    Code Preview
-                    Code Preview
-                    Code Preview
-                    Code Preview
-                </TextBlock>
+                <!-- AcceptsReturn="True" -->
+                <!-- MaxLines="5" -->
+                <!-- VerticalScrollBarVisibility="Auto" -->
+                <!-- IsReadOnly="True" -->
+                <!-- IsReadOnlyCaretVisible="True" -->
+                    <TextBlock 
+                        FontFamily="Consolas" Cursor="None" FontSize="16" 
+                               TextWrapping="Wrap"
+                               Foreground="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}" ScrollViewer.CanContentScroll="True" Background="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}">
+                        1. Line Preview<LineBreak/>
+                        2. Line Preview<LineBreak/>
+                        3. Line Preview<LineBreak/>
+                        4. Line Preview<LineBreak/>
+                        5. Line Preview<LineBreak/>
+                        6. Line Preview<LineBreak/>
+                        7. Line Preview<LineBreak/>
+                        8. Line Preview<LineBreak/>
+                        9. Line Preview<LineBreak/>
+                        10.Line Preview<LineBreak/>
+                        No one could have believed that in the last years of the nineteenth century that human affairs
+                        were being watch from the timeless worlds of space. No one could have dreamed that we were being scrutinized, the
+                        way a man with a microscope studies creatures that swarm and multiply in a drop of water. Few men
+                        even considered the possibility of life on other planets, and yet, across the gulfs of space, minds
+                        immeasurably superior to ours, regarded this earth envious eyes, and slowly, but surely, they
+                        drew their plans against us.
+                    </TextBlock>
             </Grid>
         </Grid>
     </StackPanel>

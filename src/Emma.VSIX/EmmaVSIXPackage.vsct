@@ -22,7 +22,7 @@
 
   <!--The Commands section is where commands, menus, and menu groups are defined.
       This section uses a Guid to identify the package that provides the command defined inside it. -->
-  <Commands package="emmaVSIXPackageId">
+  <Commands package="emmaCommandSetId">
     <!-- Inside this section we have different sub-sections: one for the menus, another
     for the menu groups, one for the buttons (the actual commands), one for the combos
     and the last one for the bitmaps used. Each element is identified by a command id that
@@ -46,7 +46,7 @@
         <Parent guid="guidSHLMainMenu" id="IDG_VS_WNDO_OTRWNDWS1"/>
         <Icon guid="guidImages" id="bmpPic1" />
         <Strings>
-          <ButtonText>EmmaMainToolWindowPane</ButtonText>
+          <ButtonText>Emma</ButtonText>
         </Strings>
       </Button>
     </Buttons>
@@ -72,10 +72,9 @@
   
   <Symbols>
     <!-- This is the package guid. -->
-    <GuidSymbol name="emmaVSIXPackageId" value="{2b898cca-9f4c-4b71-82d5-fbb748c90b81}" />
-    <GuidSymbol name="emmaCommandSetId" value="{9cc1062b-4c82-46d2-adcb-f5c17d55fb85}">
-      <IDSymbol name="ShowToolWindowId" value="0x0100" />
-      <IDSymbol value="257" name="emmaControlId" />
+    <!-- <GuidSymbol name="emmaCommandSetId" value="{9cc1062b-4c82-46d2-adcb-f5c17d55fb85}"> -->
+    <GuidSymbol name="emmaCommandSetId" value="{CCC2699A-6608-42EA-A6A6-3764E617D764}">
+      <IDSymbol name="emmaControlId" value="257" />
     </GuidSymbol>
 
     <!-- This is the guid used to group the menu commands together -->

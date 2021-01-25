@@ -1,9 +1,0 @@
-﻿<Application x:Class="Emma.WpfCustomControls.TestHost.App"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:Emma.WpfCustomControls.TestHost"
-             StartupUri="MainWindow.xaml">
-    <Application.Resources>
-         
-    </Application.Resources>
-</Application>

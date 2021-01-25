@@ -18,7 +18,8 @@ namespace Emma.VSIX
         /// <summary>
         /// Command menu group (command set GUID).
         /// </summary>
-        public static readonly Guid CommandSet = new Guid("9cc1062b-4c82-46d2-adcb-f5c17d55fb85");
+        // public static readonly Guid CommandSet = new Guid("9cc1062b-4c82-46d2-adcb-f5c17d55fb85");
+        public static readonly Guid CommandSet = new Guid("CCC2699A-6608-42EA-A6A6-3764E617D764");
 
         /// <summary>
         /// VS Package that provides this command, not null.
