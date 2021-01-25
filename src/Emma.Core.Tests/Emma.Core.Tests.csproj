@@ -17,4 +17,10 @@
     <ProjectReference Include="..\Emma.Core\Emma.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="Support\SampleExtensionsClass.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+  </ItemGroup>
+
 </Project>
