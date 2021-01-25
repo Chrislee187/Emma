@@ -11,12 +11,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GithubRepositoryModel", "..
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GithubRepositoryModel.Tests", "..\..\GithubRepositoryModel\src\GithubRepositoryModel.Tests\GithubRepositoryModel.Tests.csproj", "{0B0E885F-367A-4481-8E36-0327E041B096}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Emma.VSIX", "Emma.VSIX\Emma.VSIX.csproj", "{B8DACD40-6BDD-4D8B-B665-62E674865FB9}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Emma.XamlControls", "Emma.XamlControls\Emma.XamlControls.csproj", "{4E446259-AEE6-41DF-B0F0-E724EAEA4FFD}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Emma.WpfTestApp", "Emma.WpfTestApp\Emma.WpfTestApp.csproj", "{0CD9EDA5-8D47-4F72-8308-25C7E4B581E9}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
