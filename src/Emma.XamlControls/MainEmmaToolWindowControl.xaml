@@ -3,9 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Emma.XamlControls"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800" Foreground="White">
+             d:DesignHeight="450" d:DesignWidth="400" 
+             Foreground="White">
     <StackPanel Orientation="Vertical">
         <Grid>
             <Grid.ColumnDefinitions>
@@ -20,34 +20,41 @@
                 <ComboBoxItem>double</ComboBoxItem>
                 <ComboBoxItem>float</ComboBoxItem>
             </ComboBox>
-            <Button Grid.Column="1" Width="25">*</Button>
+            <Button Grid.Column="1" Width="25">
+                <Button.Background>
+                    <ImageBrush ImageSource="Resources/Search.png"/>
+                </Button.Background> *
+            </Button>
             <Button Grid.Column="2" Width="25">...</Button>
         </Grid>
-        <Grid HorizontalAlignment="Stretch">
+        <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="267*"/>
-                <ColumnDefinition Width="133*"/>
-                <ColumnDefinition Width="400*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition></RowDefinition>
-                <RowDefinition Height="75"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="100"></RowDefinition>
+                <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
 
-            <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" Grid.ColumnSpan="2">
+            <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Stretch">
                 <!-- <TextBlock Foreground="White">Extending Type</TextBlock> -->
                 <ComboBox Width="Auto" IsEditable="True" x:Name="SearchByExtendingType" Text="Extending Type Search" 
                           Background="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}">
                 </ComboBox>
             </StackPanel>
-            <StackPanel Grid.Column="2" Grid.Row="0" Orientation="Vertical" HorizontalAlignment="Stretch">
+            <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Stretch">
                 <!-- <TextBlock>Return Type</TextBlock> -->
                 <ComboBox Width="Auto" IsEditable="True" x:Name="SearchByReturnType" Text="Return Type Search">
                 </ComboBox>
             </StackPanel>
-            <Grid Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3">
-                <ListBox Background="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}">
+            <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <ListBox Background="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" Grid.ColumnSpan="2">
                     <ListBoxItem>int string.ToInt()</ListBoxItem>
                     <ListBoxItem>int string.ToInt()</ListBoxItem>
                     <ListBoxItem IsSelected="True">int string.ToInt()</ListBoxItem>
@@ -55,16 +62,22 @@
                     <ListBoxItem>int string.ToInt()</ListBoxItem>
                 </ListBox>
             </Grid>
-            <Grid Grid.Row="2" Grid.ColumnSpan="3">
-                <!-- AcceptsReturn="True" -->
-                <!-- MaxLines="5" -->
-                <!-- VerticalScrollBarVisibility="Auto" -->
-                <!-- IsReadOnly="True" -->
-                <!-- IsReadOnlyCaretVisible="True" -->
+            <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
+                <ScrollViewer>
+                    <!-- AcceptsReturn="True" -->
+                    <!-- MaxLines="5" -->
+                    <!-- VerticalScrollBarVisibility="Auto" -->
+                    <!-- IsReadOnly="True" -->
+                    <!-- IsReadOnlyCaretVisible="True" -->
                     <TextBlock 
                         FontFamily="Consolas" Cursor="None" FontSize="16" 
-                               TextWrapping="Wrap"
-                               Foreground="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}" ScrollViewer.CanContentScroll="True" Background="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}">
+                        TextWrapping="WrapWithOverflow"
+                        VerticalAlignment="Top" TextAlignment="Justify"
+                        ScrollViewer.VerticalScrollBarVisibility="Auto"
+                        ScrollViewer.CanContentScroll="True" 
+                        Foreground="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}" 
+                        Background="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" 
+                        Height="300">
                         1. Line Preview<LineBreak/>
                         2. Line Preview<LineBreak/>
                         3. Line Preview<LineBreak/>
@@ -82,6 +95,7 @@
                         immeasurably superior to ours, regarded this earth envious eyes, and slowly, but surely, they
                         drew their plans against us.
                     </TextBlock>
+                </ScrollViewer>
             </Grid>
         </Grid>
     </StackPanel>

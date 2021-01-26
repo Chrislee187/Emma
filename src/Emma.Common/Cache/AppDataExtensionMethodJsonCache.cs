@@ -1,8 +1,8 @@
 using System;
 using System.IO;
-using System.Text.Json;
 using Emma.Core.Extensions;
 using Emma.Core.MethodSources;
+using Newtonsoft.Json;
 
 namespace Emma.Core.Cache
 {
@@ -19,8 +19,8 @@ namespace Emma.Core.Cache
             }
 
             var data = File.ReadAllText(CacheFilename(cacheId));
-
-            return JsonSerializer.Deserialize<ExtensionMethodsSource>(data);
+            
+            return JsonConvert.DeserializeObject<ExtensionMethodsSource>(data);
         }
 
         public override void Remove(string cacheId)
@@ -33,7 +33,7 @@ namespace Emma.Core.Cache
 
         public override void Add(string cacheId, ExtensionMethodsSource extensionMethodsSource)
         {
-            File.WriteAllText(CacheFilename(cacheId), JsonSerializer.Serialize(extensionMethodsSource));
+            File.WriteAllText(CacheFilename(cacheId), JsonConvert.SerializeObject(extensionMethodsSource));
         }
         
         private string CacheFilename(string cacheId)

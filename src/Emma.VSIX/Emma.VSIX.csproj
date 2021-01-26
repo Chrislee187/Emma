@@ -76,7 +76,7 @@
     <VSCTCompile Include="EmmaVSIXPackage.vsct">
       <ResourceName>Menus.ctmenu</ResourceName>
     </VSCTCompile>
-    <Content Include="Resources\MainToolWindowPaneCommand.png" />
+    <Content Include="Resources\MenuIcons.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Emma.XamlControls\Emma.XamlControls.csproj">

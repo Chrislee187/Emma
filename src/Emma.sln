@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Emma.Core", "Emma.Core\Emma.Core.csproj", "{887828FE-69FE-4DDB-8264-A6A56CAB661C}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Emma.Core.Tests", "Emma.Core.Tests\Emma.Core.Tests.csproj", "{A2DC46BF-3660-4865-9635-FAB99B9731FE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GithubRepositoryModel", "..\..\GithubRepositoryModel\src\GithubRepositoryModel\GithubRepositoryModel.csproj", "{24A2E433-1BAE-4DF3-BCAF-1E80E9791286}"
@@ -17,16 +15,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Emma.WpfTestApp", "Emma.Wpf
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Emma.VSIX", "Emma.VSIX\Emma.VSIX.csproj", "{B8DACD40-6BDD-4D8B-B665-62E674865FB9}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Emma.Common", "Emma.Common\Emma.Common.csproj", "{BC6EC01B-158A-4A26-A4C8-766BC113AC17}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{887828FE-69FE-4DDB-8264-A6A56CAB661C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{887828FE-69FE-4DDB-8264-A6A56CAB661C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{887828FE-69FE-4DDB-8264-A6A56CAB661C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{887828FE-69FE-4DDB-8264-A6A56CAB661C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A2DC46BF-3660-4865-9635-FAB99B9731FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A2DC46BF-3660-4865-9635-FAB99B9731FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A2DC46BF-3660-4865-9635-FAB99B9731FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -51,6 +47,10 @@ Global
 		{B8DACD40-6BDD-4D8B-B665-62E674865FB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B8DACD40-6BDD-4D8B-B665-62E674865FB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B8DACD40-6BDD-4D8B-B665-62E674865FB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC6EC01B-158A-4A26-A4C8-766BC113AC17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC6EC01B-158A-4A26-A4C8-766BC113AC17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC6EC01B-158A-4A26-A4C8-766BC113AC17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC6EC01B-158A-4A26-A4C8-766BC113AC17}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

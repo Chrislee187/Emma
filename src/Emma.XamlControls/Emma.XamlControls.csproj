@@ -48,8 +48,8 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MainEmmaToolWindow.xaml.cs">
-      <DependentUpon>MainEmmaToolWindow.xaml</DependentUpon>
+    <Compile Include="MainEmmaToolWindowControl.xaml.cs">
+      <DependentUpon>MainEmmaToolWindowControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -74,10 +74,16 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="MainEmmaToolWindow.xaml">
+    <Page Include="MainEmmaToolWindowControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\MainToolWindowPaneCommand.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Search.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

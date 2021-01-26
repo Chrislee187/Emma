@@ -16,7 +16,7 @@ namespace Emma.Core.Adapters
 
             var extendingTypeName = prms[0].ParameterType.Name;
             
-            var paramTypeNames = prms[1..].Select(GetParamType);
+            var paramTypeNames = prms.Skip(1).Select(GetParamType);
 
             var returnTypeName = mi.ReturnType.Name;
             if (mi.ReturnType.IsGenericType)
@@ -40,7 +40,7 @@ namespace Emma.Core.Adapters
             if (pi.ParameterType.IsGenericType)
             {
                 var sb = new StringBuilder(50);
-                sb.Append(pi.ParameterType.Name[..(pi.ParameterType.Name.IndexOf('`'))]);
+                sb.Append(pi.ParameterType.Name.Substring(0,pi.ParameterType.Name.IndexOf('`')));
                 var types = pi.ParameterType.GenericTypeArguments;
                 sb.Append("<");
                 sb.Append(string.Join(", ", types.Select(t => NormaliseDotNetType(t.Name))));

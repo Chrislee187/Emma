@@ -63,7 +63,7 @@ namespace Emma.Core
             if (type == "Int32") type = "int";
             if (type == "Int64") type = "long";
 
-            if (type.EndsWith("?")) type = type[..^1]; // NOTE: Ignore nullables for now
+            if (type.EndsWith("?")) type = type.Substring(0, type.Length-1); // NOTE: Ignore nullables for now
 
             return type;
         }

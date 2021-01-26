@@ -22,7 +22,7 @@
 
   <!--The Commands section is where commands, menus, and menu groups are defined.
       This section uses a Guid to identify the package that provides the command defined inside it. -->
-  <Commands package="emmaCommandSetId">
+  <Commands package="emmaPackageId">
     <!-- Inside this section we have different sub-sections: one for the menus, another
     for the menu groups, one for the buttons (the actual commands), one for the combos
     and the last one for the bitmaps used. Each element is identified by a command id that
@@ -42,9 +42,9 @@
               <CommandFlag>DefaultInvisible</CommandFlag>
               <CommandFlag>DynamicVisibility</CommandFlag>
           If you do not want an image next to your command, remove the Icon node /> -->
-      <Button guid="emmaVSIXPackageIdCmdSet" id="MainToolWindowPaneCommandId" priority="0x0100" type="Button">
+      <Button guid="emmaCommandSetId" id="emmaControlId" priority="0x0100" type="Button">
         <Parent guid="guidSHLMainMenu" id="IDG_VS_WNDO_OTRWNDWS1"/>
-        <Icon guid="guidImages" id="bmpPic1" />
+        <Icon guid="guidImages" id="bmpPicArrows" />
         <Strings>
           <ButtonText>Emma</ButtonText>
         </Strings>
@@ -58,28 +58,25 @@
             bitmap strip containing the bitmaps and then there are the numeric ids of the elements used
             inside a button definition. An important aspect of this declaration is that the element id
             must be the actual index (1-based) of the bitmap inside the bitmap strip. -->
-      <Bitmap guid="guidImages" href="Resources\MainToolWindowPaneCommand.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough"/>
+      <Bitmap guid="guidImages" href="Resources\MenuIcons.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough"/>
     </Bitmaps>
   </Commands>
   <KeyBindings>
     <KeyBinding guid="emmaCommandSetId" id="emmaControlId"
                 editor="guidVSStd97"
                 key1="e" mod1="Control"
-                key2="m"  mod2="Control"
-    >
-    </KeyBinding>
+                key2="m"  mod2="Control"/>
   </KeyBindings>
-  
+
   <Symbols>
-    <!-- This is the package guid. -->
-    <!-- <GuidSymbol name="emmaCommandSetId" value="{9cc1062b-4c82-46d2-adcb-f5c17d55fb85}"> -->
+    <!-- see EmmaCommand.CommandSet-->
     <GuidSymbol name="emmaCommandSetId" value="{CCC2699A-6608-42EA-A6A6-3764E617D764}">
+      <!-- see EmmaCommand.CommandId-->
       <IDSymbol name="emmaControlId" value="257" />
     </GuidSymbol>
 
     <!-- This is the guid used to group the menu commands together -->
-    <GuidSymbol name="emmaVSIXPackageIdCmdSet" value="{bca95499-a57f-46ce-a415-a56a3a9f7e38}">
-      <IDSymbol name="MainToolWindowPaneCommandId" value="0x0100" />
+    <GuidSymbol name="emmaPackageId" value="{bca95499-a57f-46ce-a415-a56a3a9f7e38}">
     </GuidSymbol>
 
     <GuidSymbol name="guidImages" value="{2e651529-9ba1-462d-9010-4aa6881c3969}" >
