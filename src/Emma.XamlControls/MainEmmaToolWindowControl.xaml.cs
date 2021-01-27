@@ -1,22 +1,19 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
-using Emma.Core;
+using Emma.XamlControls.ViewModels;
 
 namespace Emma.XamlControls
 {
-    /// <summary>
-    /// Interaction logic for MainEmmaToolWindowControl.xaml
-    /// </summary>
     public partial class MainEmmaToolWindowControl : UserControl
     {
         private MainEmmaToolWindowViewModel ViewModel => (MainEmmaToolWindowViewModel) DataContext;
 
         public MainEmmaToolWindowControl()
         {
-            this.InitializeComponent();
+            InitializeComponent();
         }
 
-        public void SearchButton_Click(object sender, RoutedEventArgs e)
+        private void SearchButton_Click(object sender, RoutedEventArgs e)
         {
             ShowState();
             ViewModel.Search();

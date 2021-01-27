@@ -48,10 +48,11 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ViewModels\ExtensionMethodViewModel.cs" />
     <Compile Include="MainEmmaToolWindowControl.xaml.cs">
       <DependentUpon>MainEmmaToolWindowControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainEmmaToolWindowViewModel.cs" />
+    <Compile Include="ViewModels\MainEmmaToolWindowViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -94,5 +95,6 @@
       <Name>Emma.Common</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

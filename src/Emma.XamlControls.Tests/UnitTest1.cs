@@ -1,9 +1,8 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Threading;
 using Emma.Core;
 using Emma.Core.MethodSources;
+using Emma.XamlControls.ViewModels;
 using NUnit.Framework;
 
 namespace Emma.XamlControls.Tests

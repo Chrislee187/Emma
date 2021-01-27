@@ -1,10 +1,10 @@
 ﻿using Microsoft.VisualStudio.Shell;
-using System;
 using System.Runtime.InteropServices;
 using Emma.Core;
 using Emma.Core.Extensions;
 using Emma.Core.MethodSources;
 using Emma.XamlControls;
+using Emma.XamlControls.ViewModels;
 
 namespace Emma.VSIX
 {

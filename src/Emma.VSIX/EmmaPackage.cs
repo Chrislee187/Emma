@@ -2,8 +2,6 @@
 using System;
 using System.Runtime.InteropServices;
 using System.Threading;
-using System.Threading.Tasks;
-using Emma.XamlControls;
 using Task = System.Threading.Tasks.Task;
 
 namespace Emma.VSIX
