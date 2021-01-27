@@ -2,33 +2,49 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:core="clr-namespace:Emma.Core;assembly=Emma.Common"
+             xmlns:xamlControls="clr-namespace:Emma.XamlControls"
              mc:Ignorable="d" 
              d:DesignHeight="250" d:DesignWidth="400" 
-             Foreground="White">
+             >
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <xamlControls:ParamsToSignatureConverter
+                x:Key="ParamTypesConverter">
+
+            </xamlControls:ParamsToSignatureConverter>
+        </ResourceDictionary>
+
+    </UserControl.Resources>
     <StackPanel Orientation="Vertical" VerticalAlignment="Top" CanHorizontallyScroll="True" CanVerticallyScroll="True"
-                >
+    >
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <ComboBox Width="Auto" IsEditable="True" x:Name="SearchByName" Text="Method Name Search" 
-                      Background="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}">
-                <ComboBoxItem>string</ComboBoxItem>
-                <ComboBoxItem>int</ComboBoxItem>
-                <ComboBoxItem>double</ComboBoxItem>
-                <ComboBoxItem>float</ComboBoxItem>
+            <ComboBox Width="Auto" IsEditable="True" 
+                      x:Name="SearchByName" 
+                      Background="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}"
+                      Text="{Binding Path=MemberSearch}" 
+                      ItemsSource="{Binding Path=MemberNames}"
+                      SelectedValuePath="{Binding Path=MemberSearch}"
+                      ToolTip="Filter by extension method name"
+                      >
             </ComboBox>
             <Button Grid.Column="1" Width="25"
-                    x:Name="searchButton" 
-                    Click="SearchButton_OnClick">
+                    x:Name="SearchButton" 
+                    Click="SearchButton_Click">
                 <Button.Background>
                     <ImageBrush ImageSource="Resources/Search.png"/>
-                </Button.Background> *
+                </Button.Background>
             </Button>
-            <Button Grid.Column="2" Width="25">...</Button>
+            <Button Grid.Column="2" Width="25"
+                    
+                    Click="SettingsButton_Click"
+                    >...</Button>
 
         </Grid>
         <Grid>
@@ -42,38 +58,52 @@
                 <RowDefinition ></RowDefinition>
             </Grid.RowDefinitions>
 
-            <ComboBox Grid.Row="0" Grid.Column="0" Width="Auto" IsEditable="True" 
-                      x:Name="SearchByExtendingType" Text="Extending Type Search" 
-                      HorizontalAlignment="Stretch"
-                      Background="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}">
+            <ComboBox x:Name="SearchByExtendingType" 
+                Grid.Row="0" Grid.Column="0"
+                HorizontalAlignment="Stretch"
+                Background="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}"
+                ItemsSource="{Binding Path=ExtendingTypes}"
+                SelectedItem="{Binding Path=ExtendingTypeSearch}"
+                ToolTip="Filter by extension method Extending type"
+                >
             </ComboBox>
-            <ComboBox Width="Auto" IsEditable="True" 
-                      x:Name="SearchByReturnType" Text="Return Type Search"
-                      Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch">
-            </ComboBox>
-            <ListBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" 
-                     Height="100"
-                     Background="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" >
-                <ListBoxItem>int string.ToInt()</ListBoxItem>
-                <ListBoxItem>int string.ToInt()</ListBoxItem>
-                <ListBoxItem IsSelected="True">int string.ToInt()</ListBoxItem>
-                <ListBoxItem>int string.ToInt()</ListBoxItem>
-                <ListBoxItem>int string.ToInt()</ListBoxItem>
-                <ListBoxItem>int string.ToInt()</ListBoxItem>
-                <ListBoxItem>int string.ToInt()</ListBoxItem>
-                <ListBoxItem>int string.ToInt()</ListBoxItem>
-                <ListBoxItem>int string.ToInt()</ListBoxItem>
-                <ListBoxItem>int string.ToInt()</ListBoxItem>
-                <ListBoxItem>int string.ToInt()</ListBoxItem>
+            <ComboBox x:Name="SearchByReturnType"
+                Grid.Row="0" Grid.Column="1" 
+                HorizontalAlignment="Stretch"
+                ItemsSource="{Binding Path=ReturnTypes}"
+                SelectedItem="{Binding Path=ReturnTypeSearch}"
+                ToolTip="Filter by extension method Return type"
+            />
+            <ListBox x:Name="MethodsList" x:FieldModifier="public"
+                Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" 
+                Height="100"
+                Background="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" 
+                ItemsSource="{Binding Path=Methods}"
+                SelectionChanged="MethodsList_OnSelectionChanged"
+                ToolTip="Methods matching the filter criteria"
+            >
+                <ListBox.ItemTemplate>
+                    <DataTemplate DataType="core:ExtensionMethod">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Path=ReturnType}"/>
+                            <TextBlock Text=" &lt;"/>
+                            <TextBlock FontWeight="Bold" Text="{Binding Path=ExtendingType}"/>
+                            <TextBlock Text="&gt;."/>
+                            <TextBlock Text="{Binding Path=Name}"/>
+                            <TextBlock Text="("/>
+                            <TextBlock FontStyle="Italic" Text="{Binding Path=ParamTypes,  Converter = {StaticResource ParamTypesConverter}}"/>
+                            <TextBlock Text=");"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
             </ListBox>
-                <TextBox 
-                    x:Name="codePreview" 
-                    FontFamily="Consolas" FontSize="16" 
-                    Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
-                    VerticalScrollBarVisibility="Auto"
-                    TextWrapping="Wrap"
-                    Height="100"
-                    Text="
+            <TextBox x:Name="CodePreview" 
+                     FontFamily="Consolas" FontSize="16" 
+                     Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+                     VerticalScrollBarVisibility="Auto"
+                     TextWrapping="Wrap"
+                     Height="100"
+                     Text="
 01. Line Preview&#10;
 02. Line Preview&#10;
 03. Line Preview&#10;
@@ -91,8 +121,8 @@ even considered the possibility of life on other planets, and yet, across the gu
 immeasurably superior to ours, regarded this earth envious eyes, and slowly, but surely, they
 drew their plans against us.
 "
-                    >
-                </TextBox>
+            >
+            </TextBox>
         </Grid>
     </StackPanel>
 </UserControl>

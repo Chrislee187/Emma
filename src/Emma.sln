@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Emma.VSIX", "Emma.VSIX\Emma
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Emma.Common", "Emma.Common\Emma.Common.csproj", "{BC6EC01B-158A-4A26-A4C8-766BC113AC17}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Emma.XamlControls.Tests", "Emma.XamlControls.Tests\Emma.XamlControls.Tests.csproj", "{D96ED96A-9D3A-4B61-A159-96E095B6AEE7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{BC6EC01B-158A-4A26-A4C8-766BC113AC17}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC6EC01B-158A-4A26-A4C8-766BC113AC17}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BC6EC01B-158A-4A26-A4C8-766BC113AC17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D96ED96A-9D3A-4B61-A159-96E095B6AEE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D96ED96A-9D3A-4B61-A159-96E095B6AEE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D96ED96A-9D3A-4B61-A159-96E095B6AEE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D96ED96A-9D3A-4B61-A159-96E095B6AEE7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

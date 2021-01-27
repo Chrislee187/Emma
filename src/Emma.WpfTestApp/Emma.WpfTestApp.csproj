@@ -95,6 +95,14 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\GithubRepositoryModel\src\GithubRepositoryModel\GithubRepositoryModel.csproj">
+      <Project>{24A2E433-1BAE-4DF3-BCAF-1E80E9791286}</Project>
+      <Name>GithubRepositoryModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Emma.Common\Emma.Common.csproj">
+      <Project>{bc6ec01b-158a-4a26-a4c8-766bc113ac17}</Project>
+      <Name>Emma.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Emma.XamlControls\Emma.XamlControls.csproj">
       <Project>{4e446259-aee6-41df-b0f0-e724eaea4ffd}</Project>
       <Name>Emma.XamlControls</Name>

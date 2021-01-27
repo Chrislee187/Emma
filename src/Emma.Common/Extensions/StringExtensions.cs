@@ -23,5 +23,7 @@ namespace Emma.Core.Extensions
         public static string ReplaceChars(this string source, char[] chars, char newChar = '_') => 
             chars.Aggregate(source, (s, c) => s.Replace(c, newChar));
 
+        public static int ToInt(this string source) => int.Parse(source);
+
     }
 }

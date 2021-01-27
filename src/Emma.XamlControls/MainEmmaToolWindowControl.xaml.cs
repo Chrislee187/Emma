@@ -1,18 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using Emma.Core;
 
 namespace Emma.XamlControls
 {
@@ -21,17 +9,41 @@ namespace Emma.XamlControls
     /// </summary>
     public partial class MainEmmaToolWindowControl : UserControl
     {
+        private MainEmmaToolWindowViewModel ViewModel => (MainEmmaToolWindowViewModel) DataContext;
+
         public MainEmmaToolWindowControl()
         {
             this.InitializeComponent();
         }
 
-        private void SearchButton_OnClick(object sender, RoutedEventArgs e)
+        public void SearchButton_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(
-                string.Format(System.Globalization.CultureInfo.CurrentUICulture, "Invoked '{0}'", this.ToString()),
-                "Emma");
+            ShowState();
+            ViewModel.Search();
         }
 
+        private void ShowState()
+        {
+            var msg = $"Member Search: {ViewModel.MemberSearch}\n" +
+                   $"Extending Type Search: {ViewModel.ExtendingTypeSearch}\n" +
+                   $"Return Type Search: {ViewModel.ReturnTypeSearch}\n" 
+                ;
+            MessageBox.Show($"{msg}", $"Show State");
+        }
+
+        private void MethodsList_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (e.AddedItems.Count > 0)
+            {
+                var em = (ExtensionMethodViewModel) e.AddedItems[0];
+                ViewModel.MethodSelected(em);
+                MessageBox.Show($"{em.Name}");
+            }
+        }
+
+        private void SettingsButton_Click(object sender, RoutedEventArgs e)
+        {
+            ShowState();
+        }
     }
 }
