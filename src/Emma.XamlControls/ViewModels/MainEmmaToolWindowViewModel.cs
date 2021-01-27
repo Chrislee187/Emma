@@ -28,12 +28,13 @@ namespace Emma.XamlControls.ViewModels
                     _query = new ExtensionMethodQuery()
                     {
                         Name = MatchAny(MemberSearch),
-                        NameMatchMode = StringMatchMode.StartsWith,
+                        NameMatchMode = StringMatchMode.Contains,
                         ExtendingType = MatchAny(ExtendingTypeSearch),
                         ExtendingTypeMatchMode = StringMatchMode.Equals,
                         ReturnType = MatchAny(ReturnTypeSearch),
                         ReturnTypeMatchMode = StringMatchMode.Equals
                     };
+                    _query.Insensitive = true;
                 }
 
                 return _query;
@@ -57,9 +58,11 @@ namespace Emma.XamlControls.ViewModels
         {
             get
             {
-                return _memberNames ?? (_memberNames = _emLibrary.Methods
+                return _memberNames ?? (_memberNames =
+                    AnyItem.Concat(
+                    _emLibrary.Methods
                     .Select(m => m.Name)
-                    .Distinct());
+                    .Distinct()));
             }
         }
 

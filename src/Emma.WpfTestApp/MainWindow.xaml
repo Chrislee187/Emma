@@ -1,4 +1,6 @@
 ﻿<Grid xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
-            xmlns:XamlControls="clr-namespace:Emma.XamlControls;assembly=Emma.XamlControls" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <XamlControls:MainEmmaToolWindowControl x:Name="EmmaTestHostControl" />
+            xmlns:XamlControls="clr-namespace:Emma.XamlControls;assembly=Emma.XamlControls" 
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            >
+    <XamlControls:MainEmmaToolWindowControl />
 </Grid>
