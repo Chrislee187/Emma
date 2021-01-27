@@ -1,18 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using Emma.Core;
 
 namespace Emma.XamlControls
 {
@@ -21,6 +9,8 @@ namespace Emma.XamlControls
     /// </summary>
     public partial class MainEmmaToolWindowControl : UserControl
     {
+        private MainEmmaToolWindowViewModel ViewModel => (MainEmmaToolWindowViewModel) DataContext;
+
         public MainEmmaToolWindowControl()
         {
             this.InitializeComponent();
@@ -28,10 +18,29 @@ namespace Emma.XamlControls
 
         private void SearchButton_OnClick(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(
-                string.Format(System.Globalization.CultureInfo.CurrentUICulture, "Invoked '{0}'", this.ToString()),
-                "Emma");
+            
+            MessageBox.Show($"Search clicked: {SearchDebug()}",
+                $"{sender.ToString()}");
         }
 
+        private string SearchDebug()
+        {
+            return $"Member Search: {ViewModel.MemberSearch}\n" +
+                   $"Extending Type Search: {ViewModel.ExtendingTypeSearch}\n" +
+                   $"Return Type Search: {ViewModel.ReturnTypeSearch}\n"
+                ;
+        }
+
+
+        private void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (e.AddedItems.Count == 1)
+            {
+                var item = (ExtensionMethod) e.AddedItems[0];
+                ViewModel.SignatureSelected(item);
+                MessageBox.Show($"Selected: {item.Name}",
+                    $"{sender.ToString()}");
+            }
+        }
     }
 }

@@ -3,6 +3,7 @@ using System;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
+using Emma.XamlControls;
 using Task = System.Threading.Tasks.Task;
 
 namespace Emma.VSIX
@@ -34,19 +35,19 @@ namespace Emma.VSIX
         {
             return "EMMA - Extension Method Manager";
         }
-
-        protected override async Task<object> InitializeToolWindowAsync(Type toolWindowType, int id, CancellationToken cancellationToken)
-        {
-            // Perform as much work as possible in this method which is being run on a background thread.
-            // The object returned from this method is passed into the constructor of the SampleToolWindow 
-            var dte = await GetServiceAsync(typeof(EnvDTE.DTE)) as EnvDTE80.DTE2;
-            //
-            // return new State
-            // {
-            //     DTE = dte
-            // };
-            return null;
-        }
+        
+        // protected override async Task<object> InitializeToolWindowAsync(Type toolWindowType, int id, CancellationToken cancellationToken)
+        // {
+        //     // Perform as much work as possible in this method which is being run on a background thread.
+        //     // The object returned from this method is passed into the constructor of the SampleToolWindow 
+        //     var dte = await GetServiceAsync(typeof(EnvDTE.DTE)) as EnvDTE80.DTE2;
+        //     //
+        //     // return new State
+        //     // {
+        //     //     DTE = dte
+        //     // };
+        //     return new MainEmmaToolWindowViewModel();
+        // }
 
         #endregion
     }

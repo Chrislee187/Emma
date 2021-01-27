@@ -2,31 +2,42 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:core="clr-namespace:Emma.Core;assembly=Emma.Common"
+             xmlns:xamlControls="clr-namespace:Emma.XamlControls"
              mc:Ignorable="d" 
              d:DesignHeight="250" d:DesignWidth="400" 
              Foreground="White">
-    <StackPanel Orientation="Vertical" VerticalAlignment="Top" CanHorizontallyScroll="True" CanVerticallyScroll="True"
-                >
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <xamlControls:ParamsToSignatureConverter
+                x:Key="ParamTypesConverter">
+
+            </xamlControls:ParamsToSignatureConverter>
+        </ResourceDictionary>
+
+    </UserControl.Resources>
+<StackPanel Orientation="Vertical" VerticalAlignment="Top" CanHorizontallyScroll="True" CanVerticallyScroll="True"
+    >
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <ComboBox Width="Auto" IsEditable="True" x:Name="SearchByName" Text="Method Name Search" 
-                      Background="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}">
-                <ComboBoxItem>string</ComboBoxItem>
-                <ComboBoxItem>int</ComboBoxItem>
-                <ComboBoxItem>double</ComboBoxItem>
-                <ComboBoxItem>float</ComboBoxItem>
+            <ComboBox Width="Auto" IsEditable="True" 
+                      x:Name="SearchByName" 
+                      Background="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}"
+                      Text="{Binding Path=MemberSearch}" 
+                      ItemsSource="{Binding Path=MemberNames}"
+                      >
             </ComboBox>
             <Button Grid.Column="1" Width="25"
-                    x:Name="searchButton" 
+                    x:Name="SearchButton" 
                     Click="SearchButton_OnClick">
                 <Button.Background>
                     <ImageBrush ImageSource="Resources/Search.png"/>
-                </Button.Background> *
+                </Button.Background>
             </Button>
             <Button Grid.Column="2" Width="25">...</Button>
 
@@ -43,30 +54,44 @@
             </Grid.RowDefinitions>
 
             <ComboBox Grid.Row="0" Grid.Column="0" Width="Auto" IsEditable="True" 
-                      x:Name="SearchByExtendingType" Text="Extending Type Search" 
+                      x:Name="SearchByExtendingType" 
                       HorizontalAlignment="Stretch"
-                      Background="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}">
+                      Background="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}"
+                      Text="{Binding Path=ExtendingTypeSearch}" 
+                      ItemsSource="{Binding Path=ExtendingTypes}"
+
+                      >
             </ComboBox>
             <ComboBox Width="Auto" IsEditable="True" 
-                      x:Name="SearchByReturnType" Text="Return Type Search"
-                      Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch">
+                      x:Name="SearchByReturnType"
+                      Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch"
+                      Text="{Binding Path=ReturnTypeSearch}" 
+                      ItemsSource="{Binding Path=ReturnTypes}"
+                      
+                      >
             </ComboBox>
             <ListBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" 
                      Height="100"
-                     Background="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" >
-                <ListBoxItem>int string.ToInt()</ListBoxItem>
-                <ListBoxItem>int string.ToInt()</ListBoxItem>
-                <ListBoxItem IsSelected="True">int string.ToInt()</ListBoxItem>
-                <ListBoxItem>int string.ToInt()</ListBoxItem>
-                <ListBoxItem>int string.ToInt()</ListBoxItem>
-                <ListBoxItem>int string.ToInt()</ListBoxItem>
-                <ListBoxItem>int string.ToInt()</ListBoxItem>
-                <ListBoxItem>int string.ToInt()</ListBoxItem>
-                <ListBoxItem>int string.ToInt()</ListBoxItem>
-                <ListBoxItem>int string.ToInt()</ListBoxItem>
-                <ListBoxItem>int string.ToInt()</ListBoxItem>
+                     Background="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" 
+                     ItemsSource="{Binding Path=Methods}"
+                     SelectionChanged="OnSelectionChanged"
+                     >
+                <ListBox.ItemTemplate>
+                    <DataTemplate DataType="core:ExtensionMethod">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Path=ReturnType}"/>
+                            <TextBlock Text=" &lt;"/>
+                            <TextBlock FontWeight="Bold" Text="{Binding Path=ExtendingType}"/>
+                            <TextBlock Text="&gt;."/>
+                            <TextBlock FontStyle="Italic" Text="{Binding Path=Name}"/>
+                            <TextBlock Text="("/>
+                            <TextBlock Text="{Binding Path=ParamTypes,  Converter = {StaticResource ParamTypesConverter}}"/>
+                            <TextBlock Text=");"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
             </ListBox>
-                <TextBox 
+            <TextBox 
                     x:Name="codePreview" 
                     FontFamily="Consolas" FontSize="16" 
                     Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
@@ -92,7 +117,7 @@ immeasurably superior to ours, regarded this earth envious eyes, and slowly, but
 drew their plans against us.
 "
                     >
-                </TextBox>
+            </TextBox>
         </Grid>
     </StackPanel>
 </UserControl>

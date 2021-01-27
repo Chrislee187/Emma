@@ -53,7 +53,7 @@ namespace Emma.Core
             // NOTE: Some hacky code to make types from reflective mechanisms match the strings in source code files
             // only really used for the test comparisons
 
-            if (new[] {"Byte", "String", "Void", "Single", "Double", "Decimal", "Object", "Char", "Boolean"}.Contains(type))
+            if (new[] {"Byte", "String", "Void", "Single", "Double", "Decimal", "Object", "Char", "Boolean"}.Any(t => type.StartsWith(t)))
             {
                 type = type.ToLowerInvariant();
             }

@@ -52,6 +52,9 @@ namespace Emma.VSIX
             {
                 var window = await this._package.ShowToolWindowAsync(
                     typeof(EmmaMainToolWindowPane), 0, true, this._package.DisposalToken);
+                
+                
+               
                 if (window?.Frame == null)
                 {
                     throw new NotSupportedException("Cannot create tool window");
