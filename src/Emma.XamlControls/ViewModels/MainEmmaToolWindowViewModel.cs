@@ -13,8 +13,34 @@ namespace Emma.XamlControls.ViewModels
         private const string AnyItemIndicator = "*";
         private static readonly List<string> AnyItem = new List<string> { AnyItemIndicator };
 
-        #region Search Properties
+        #region Method List Filtering
+        public IEnumerable<ExtensionMethodViewModel> Methods => _emLibrary.Find(Query)
+            .Select(ExtensionMethodViewModel.Create);
 
+        string MatchAny(string s) => s == AnyItemIndicator ? "" : s;
+        private ExtensionMethodQuery _query;
+        private ExtensionMethodQuery Query
+        {
+            get
+            {
+                if (_query == null)
+                {
+                    _query = new ExtensionMethodQuery()
+                    {
+                        Name = MatchAny(MemberSearch),
+                        NameMatchMode = StringMatchMode.StartsWith,
+                        ExtendingType = MatchAny(ExtendingTypeSearch),
+                        ExtendingTypeMatchMode = StringMatchMode.Equals,
+                        ReturnType = MatchAny(ReturnTypeSearch),
+                        ReturnTypeMatchMode = StringMatchMode.Equals
+                    };
+                }
+
+                return _query;
+            }
+        }
+
+        private string _memberSearch = AnyItemIndicator;
         public string MemberSearch
         {
             get => _memberSearch;
@@ -26,8 +52,18 @@ namespace Emma.XamlControls.ViewModels
                 OnPropertyChanged(nameof(Methods));
             }
         }
+        private IEnumerable<string> _memberNames;
+        public IEnumerable<string> MemberNames
+        {
+            get
+            {
+                return _memberNames ?? (_memberNames = _emLibrary.Methods
+                    .Select(m => m.Name)
+                    .Distinct());
+            }
+        }
 
-        private string _extendingTypeSearch = "*";
+        private string _extendingTypeSearch = AnyItemIndicator;
         public string ExtendingTypeSearch
         {
             get => _extendingTypeSearch;
@@ -52,7 +88,7 @@ namespace Emma.XamlControls.ViewModels
             }
         }
 
-        private string _returnTypeSearch = "*";
+        private string _returnTypeSearch = AnyItemIndicator;
         public string ReturnTypeSearch
         {
             get => _returnTypeSearch;
@@ -64,12 +100,6 @@ namespace Emma.XamlControls.ViewModels
                 OnPropertyChanged(nameof(Methods));
             }
         }
-
-        private void SetQueryChanged()
-        {
-            _query = null;
-        }
-
         private IEnumerable<string> _returnTypes;
         public IEnumerable<string> ReturnTypes
         {
@@ -84,49 +114,14 @@ namespace Emma.XamlControls.ViewModels
             }
         }
 
-        private IEnumerable<string> _memberNames;
-        public IEnumerable<string> MemberNames
+        private void SetQueryChanged()
         {
-            get
-            {
-                return _memberNames ?? (_memberNames = _emLibrary.Methods
-                    .Select(m => m.Name)
-                    .Distinct());
-            }
+            _query = null;
         }
 
-
-        private ExtensionMethodQuery _query;
-        private string _memberSearch = "*";
-
-        string MatchAny(string s) => s == AnyItemIndicator ? "" : s;
-        private ExtensionMethodQuery Query
-        {
-            get
-            {
-                if (_query == null)
-                {
-                    _query = new ExtensionMethodQuery()
-                    {
-                        Name = MatchAny(MemberSearch),
-                        NameMatchMode = StringMatchMode.StartsWith,
-                        ExtendingType = MatchAny(ExtendingTypeSearch),
-                        ExtendingTypeMatchMode = StringMatchMode.Equals,
-                        ReturnType = MatchAny(ReturnTypeSearch),
-                        ReturnTypeMatchMode = StringMatchMode.Equals
-                    };
-                }
-
-                return _query;
-            }
-        }
         #endregion
 
         public ExtensionMethod SelectedMethod { get; set; }
-        public IEnumerable<ExtensionMethodViewModel> Methods => _emLibrary.Find(Query)
-            // .Methods
-            // .Where(IsMatchingMethod)
-            .Select(ExtensionMethodViewModel.Create);
 
         public MainEmmaToolWindowViewModel(ExtensionMethodLibrary emLibrary)
         {
@@ -140,20 +135,6 @@ namespace Emma.XamlControls.ViewModels
         {
             SelectedMethod = selected.ExtensionMethod;
             OnPropertyChanged(nameof(SelectedMethod));
-        }
-
-        private bool IsMatchingMethod(ExtensionMethod method)
-        {
-            bool MatchAny(string s) => string.IsNullOrEmpty(s) || s == AnyItemIndicator;
-            
-            var name = MatchAny(MemberSearch) 
-                       || method.Name.ToLower().Contains(MemberSearch.ToLower());
-            var extendingType = MatchAny(ExtendingTypeSearch)
-                                || method.ExtendingType.ToLower().Contains(ExtendingTypeSearch.ToLower());
-            var returnType = MatchAny(ReturnTypeSearch)
-                             || method.ReturnType.ToLower().Contains(ReturnTypeSearch.ToLower());
-
-            return name && extendingType && returnType;
         }
     }
 }
