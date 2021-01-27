@@ -13,7 +13,7 @@ namespace Emma.XamlControls.ViewModels
         private const string AnyItemIndicator = "*";
         private static readonly List<string> AnyItem = new List<string> { AnyItemIndicator };
 
-        #region Method List Filtering
+        #region Method List Filtering Properties
         public IEnumerable<ExtensionMethodViewModel> Methods => _emLibrary.Find(Query)
             .Select(ExtensionMethodViewModel.Create);
 

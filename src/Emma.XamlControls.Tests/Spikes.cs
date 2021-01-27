@@ -8,7 +8,7 @@ using NUnit.Framework;
 namespace Emma.XamlControls.Tests
 {
     [TestFixture, Apartment(ApartmentState.STA)]
-    public class UnitTest1
+    public class Spikes
     {
         private MainEmmaToolWindowControl _control;
 
