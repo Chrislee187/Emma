@@ -20,7 +20,7 @@ namespace Emma.XamlControls.ViewModels
 
         string MatchAny(string s) => s == AnyItemIndicator ? "" : s;
         private ExtensionMethodQuery _query;
-        private ExtensionMethodQuery Query
+        public ExtensionMethodQuery Query
         {
             get
             {
@@ -50,8 +50,7 @@ namespace Emma.XamlControls.ViewModels
             {
                 _memberSearch = value;
                 SetQueryChanged();
-                OnPropertyChanged(nameof(MemberSearch));
-                OnPropertyChanged(nameof(Methods));
+                Search();
             }
         }
         private IEnumerable<string> _memberNames;
@@ -75,8 +74,7 @@ namespace Emma.XamlControls.ViewModels
             {
                 _extendingTypeSearch = value;
                 SetQueryChanged();
-                OnPropertyChanged(nameof(ExtendingTypeSearch));
-                OnPropertyChanged(nameof(Methods));
+                Search();
             }
         }
         private IEnumerable<string> _extendingTypes;
@@ -100,8 +98,7 @@ namespace Emma.XamlControls.ViewModels
             {
                 _returnTypeSearch = value;
                 SetQueryChanged();
-                OnPropertyChanged(nameof(ReturnTypeSearch));
-                OnPropertyChanged(nameof(Methods));
+                Search();
             }
         }
         private IEnumerable<string> _returnTypes;

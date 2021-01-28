@@ -1,33 +1,16 @@
-﻿using System;
-using System.Threading;
-using Emma.Core;
-using Emma.Core.MethodSources;
-using Emma.XamlControls.ViewModels;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
 using NUnit.Framework;
+using Shouldly;
 
 namespace Emma.XamlControls.Tests
 {
-    [TestFixture, Apartment(ApartmentState.STA)]
+    [TestFixture]
     public class Spikes
     {
-        private MainEmmaToolWindowControl _control;
 
         [SetUp]
         public void SetUp()
-        {
-            var mis = ExtensionMethodParser.Parse(typeof(MainEmmaToolWindowControl).Assembly);
-            var src = new ExtensionMethodsSource() { Methods = mis, LastUpdated = DateTimeOffset.Now};
-            
-            
-            var library = new ExtensionMethodLibrary(src);
-            _control = new MainEmmaToolWindowControl
-            {
-                DataContext = new MainEmmaToolWindowViewModel(library)
-            };
-        }
-        
-        [Test]
-        public void TestMethod1()
         {
         }
     }
