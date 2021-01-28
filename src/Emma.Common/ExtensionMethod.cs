@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Emma.Core
+namespace Emma.Common
 {
     public class ExtensionMethod
     {
@@ -28,12 +28,18 @@ namespace Emma.Core
         // ReSharper restore UnusedAutoPropertyAccessor.Global
 
         // ReSharper disable once UnusedMember.Global -- JSON Serialisation
-        public ExtensionMethod()
+        protected ExtensionMethod()
         {
             
         }
-
-        public ExtensionMethod(string name, string extendingType, string returnType, IEnumerable<string> paramTypes,
+        public static ExtensionMethod Create(string name, string extendingType, string returnType, IEnumerable<string> paramTypes,
+            ExtensionMethodSourceType sourceType, object source,
+            DateTimeOffset lastUpdated, string sourceLocation, string className)
+        {
+            return new ExtensionMethod(name, extendingType, returnType, paramTypes, sourceType, source, lastUpdated,
+                sourceLocation, className);
+        }
+        private ExtensionMethod(string name, string extendingType, string returnType, IEnumerable<string> paramTypes,
             ExtensionMethodSourceType sourceType, object source,
             DateTimeOffset lastUpdated, string sourceLocation, string className)
         {

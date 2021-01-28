@@ -3,7 +3,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 
-namespace Emma.Core.Adapters
+namespace Emma.Common.Adapters
 {
     internal class MethodInfoExtensionMethod : ExtensionMethod
     {

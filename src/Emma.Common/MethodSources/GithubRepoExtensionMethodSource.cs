@@ -1,11 +1,10 @@
-using Emma.Core.Cache;
+using Emma.Common.Cache;
 using GithubRepositoryModel;
 
-namespace Emma.Core.MethodSources
+namespace Emma.Common.MethodSources
 {
     public class GithubRepoExtensionMethodsSource : ExtensionMethodsSource
     {
-
         private readonly ExtensionMethodCache _cache;
         private readonly IGithub _github;
         private readonly string _userName;

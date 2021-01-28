@@ -1,6 +1,6 @@
 ﻿using System;
-using Emma.Core;
-using Emma.Core.MethodSources;
+using Emma.Common;
+using Emma.Common.MethodSources;
 using Emma.XamlControls.Tests.Support;
 using Emma.XamlControls.ViewModels;
 using NUnit.Framework;
@@ -8,13 +8,6 @@ using Shouldly;
 
 namespace Emma.XamlControls.Tests.ViewModels
 {
-    
-    public class ViewModelTestsBase
-    {
-        protected readonly PropertiesChanged PropertiesNotified = new PropertiesChanged();
-
-    }
-
     [TestFixture]
     public class MainEmmaToolWindowViewModelTests : ViewModelTestsBase
     {
@@ -87,7 +80,7 @@ namespace Emma.XamlControls.Tests.ViewModels
         [Test]
         public void Selecting_Method_triggers_CorePreview_property_changed()
         {
-            var emvm = ExtensionMethodViewModel.Create(new ExtensionMethod() { Name = "Test" });
+            var emvm = ExtensionMethodViewModel.Create(new ExtensionMethodBuilder().Build());
             _viewModel.MethodSelected(emvm);
             PropertiesNotified.ShouldContain(nameof(MainEmmaToolWindowViewModel.CodePreviewText));
         }
@@ -96,12 +89,13 @@ namespace Emma.XamlControls.Tests.ViewModels
         public void CodePreviewText_shows_message_for_assemblies()
         {
             const string sourceLocation = "Test Location";
-            var emvm = ExtensionMethodViewModel.Create(new ExtensionMethod()
-            {
-                Name = "Test",
-                SourceType = ExtensionMethodSourceType.Assembly,
-                SourceLocation = sourceLocation
-            });
+            var emvm = ExtensionMethodViewModel.Create(
+                new ExtensionMethodBuilder()
+                    .WithSourceLocation(sourceLocation)
+                    .Build()
+                );
+
+
             _viewModel.MethodSelected(emvm);
 
             _viewModel.CodePreviewText.ShouldContain(sourceLocation);
@@ -111,12 +105,12 @@ namespace Emma.XamlControls.Tests.ViewModels
         public void CodePreviewText_shows_code_for_source()
         {
             const string testSourceCode = "Test Source Code";
-            var emvm = ExtensionMethodViewModel.Create(new ExtensionMethod()
-            {
-                Name = "Test",
-                SourceType = ExtensionMethodSourceType.SourceCode,
-                Source = testSourceCode
-            });
+            var emvm = ExtensionMethodViewModel.Create(
+                new ExtensionMethodBuilder()
+                    .WithSource(testSourceCode)
+                    .Build()
+            );
+
             _viewModel.MethodSelected(emvm);
 
             _viewModel.CodePreviewText.ShouldContain(testSourceCode);

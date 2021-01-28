@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Emma.Core;
+using Emma.Common;
 
 namespace Emma.XamlControls.ViewModels
 {

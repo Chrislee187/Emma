@@ -1,6 +1,6 @@
-using Emma.Core.MethodSources;
+using Emma.Common.MethodSources;
 
-namespace Emma.Core.Cache
+namespace Emma.Common.Cache
 {
     public interface IExtensionMethodCache
     {

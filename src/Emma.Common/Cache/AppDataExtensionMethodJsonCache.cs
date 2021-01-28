@@ -1,10 +1,10 @@
 using System;
 using System.IO;
-using Emma.Core.Extensions;
-using Emma.Core.MethodSources;
+using Emma.Common.Extensions;
+using Emma.Common.MethodSources;
 using Newtonsoft.Json;
 
-namespace Emma.Core.Cache
+namespace Emma.Common.Cache
 {
     public class AppDataExtensionMethodJsonCache : ExtensionMethodCache
     {

@@ -3,8 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:core="clr-namespace:Emma.Core;assembly=Emma.Common"
              xmlns:xamlControls="clr-namespace:Emma.XamlControls"
+             xmlns:common="clr-namespace:Emma.Common;assembly=Emma.Common"
              mc:Ignorable="d" 
              d:DesignHeight="250" d:DesignWidth="400" 
              >
@@ -109,7 +109,7 @@
                 IsSynchronizedWithCurrentItem="True"
                 >
                 <ListBox.ItemTemplate>
-                    <DataTemplate DataType="core:ExtensionMethod">
+                    <DataTemplate DataType="common:ExtensionMethod">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="{Binding Path=ReturnType}"/>
                             <TextBlock Text=" &lt;"/>

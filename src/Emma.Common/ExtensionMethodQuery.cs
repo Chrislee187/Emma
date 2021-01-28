@@ -1,6 +1,6 @@
 using System.Linq;
 
-namespace Emma.Core
+namespace Emma.Common
 {
 
     public class ExtensionMethodQuery

@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace Emma.Core.Extensions
+namespace Emma.Common.Extensions
 {
     public static class StringExtensions
     {

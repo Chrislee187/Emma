@@ -4,14 +4,14 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
-using Emma.Core.Adapters;
-using Emma.Core.Extensions;
+using Emma.Common.Adapters;
+using Emma.Common.Extensions;
 using GithubRepositoryModel;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 
-namespace Emma.Core
+namespace Emma.Common
 {
     public static class ExtensionMethodParser
     {

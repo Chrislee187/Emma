@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Emma.Core
+namespace Emma.Common
 {
     public class QueryMatchers
     {

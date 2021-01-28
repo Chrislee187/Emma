@@ -1,12 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Emma.Core.Extensions;
+using Emma.Common.Extensions;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 
-namespace Emma.Core.Adapters
+namespace Emma.Common.Adapters
 {
     public class MemberSyntaxListExtensionMethods : IEnumerable<ExtensionMethod>
     {
@@ -48,7 +48,7 @@ namespace Emma.Core.Adapters
 
                         if (method.IsExtensionMethod())
                         {
-                            ems.Add(new MemberSyntaxExtensionMethod(method, lastUpdated, _lastClassName, sourceLocation));
+                            ems.Add(MemberSyntaxExtensionMethod.Create(method, lastUpdated, _lastClassName, sourceLocation));
                         }
 
                         break;

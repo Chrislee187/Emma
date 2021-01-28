@@ -1,8 +1,8 @@
 ﻿using Microsoft.VisualStudio.Shell;
 using System.Runtime.InteropServices;
-using Emma.Core;
-using Emma.Core.Extensions;
-using Emma.Core.MethodSources;
+using Emma.Common;
+using Emma.Common.Extensions;
+using Emma.Common.MethodSources;
 using Emma.XamlControls;
 using Emma.XamlControls.ViewModels;
 

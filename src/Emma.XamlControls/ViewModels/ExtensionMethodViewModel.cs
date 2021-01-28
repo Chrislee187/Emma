@@ -1,4 +1,4 @@
-﻿using Emma.Core;
+﻿using Emma.Common;
 
 namespace Emma.XamlControls.ViewModels
 {

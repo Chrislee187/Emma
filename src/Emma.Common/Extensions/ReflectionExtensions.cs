@@ -4,7 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 
-namespace Emma.Core.Extensions
+namespace Emma.Common.Extensions
 {
     public static class ReflectionExtensions
     {

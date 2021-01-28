@@ -2,9 +2,9 @@
 using System.IO;
 using System.Linq;
 using System.Windows;
-using Emma.Core;
-using Emma.Core.Extensions;
-using Emma.Core.MethodSources;
+using Emma.Common;
+using Emma.Common.Extensions;
+using Emma.Common.MethodSources;
 using Emma.XamlControls;
 using Emma.XamlControls.ViewModels;
 

@@ -1,6 +1,6 @@
 ﻿using System;
-using Emma.Core;
-using Emma.Core.MethodSources;
+using Emma.Common;
+using Emma.Common.MethodSources;
 
 namespace Emma.XamlControls.Tests.Support
 {

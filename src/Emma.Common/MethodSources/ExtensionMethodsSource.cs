@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Emma.Core.MethodSources
+namespace Emma.Common.MethodSources
 {
     public class ExtensionMethodsSource
     {

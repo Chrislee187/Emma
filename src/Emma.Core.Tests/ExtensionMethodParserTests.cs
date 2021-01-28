@@ -1,7 +1,8 @@
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Emma.Core.Extensions;
+using Emma.Common;
+using Emma.Common.Extensions;
 using Emma.Core.Tests.Support;
 using GithubRepositoryModel;
 using NUnit.Framework;

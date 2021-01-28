@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
-using Emma.Core.MethodSources;
+using Emma.Common.MethodSources;
 
-namespace Emma.Core
+namespace Emma.Common
 {
     public class ExtensionMethodLibrary
     {

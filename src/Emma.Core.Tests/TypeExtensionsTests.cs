@@ -1,5 +1,5 @@
 using System.Linq;
-using Emma.Core.Extensions;
+using Emma.Common.Extensions;
 using Emma.Core.Tests.Support;
 using NUnit.Framework;
 using Shouldly;
