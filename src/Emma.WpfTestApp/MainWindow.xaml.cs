@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Linq;
 using System.Windows;
 using Emma.Core;
 using Emma.Core.Extensions;
@@ -10,22 +12,35 @@ namespace Emma.WpfTestApp
 {
     public partial class MainWindow : Window
     {
-        protected override void OnActivated(EventArgs e)
+        public MainWindow()
         {
-            base.OnActivated(e);
-            var methods = typeof(StringExtensions).ExtensionMethods();
-            var testSrc = new ExtensionMethodsSource
-            {
-                Methods = ExtensionMethodParser.Parse(methods, DateTime.Now)
-            };
-            var lib = new ExtensionMethodLibrary(testSrc);
-
             var mainEmmaToolWindowControl = new MainEmmaToolWindowControl
             {
-                DataContext = new MainEmmaToolWindowViewModel(lib)
+                DataContext = new MainEmmaToolWindowViewModel(CreateTestLibrary())
             };
             Content = mainEmmaToolWindowControl;
             mainEmmaToolWindowControl.Focus();
+        }
+
+        private static ExtensionMethodLibrary CreateTestLibrary()
+        {
+            var assemblyMethods = ExtensionMethodParser.Parse(typeof(StringExtensions).ExtensionMethods());
+
+            var srcFile = @"..\..\..\Emma.Common\Extensions\StringExtensions.cs";
+            var src = File.ReadAllText(srcFile);
+            var fileMethods = ExtensionMethodParser.Parse(src, srcFile, lastUpdated: DateTimeOffset.Now);
+
+            var lib = new ExtensionMethodLibrary(
+                new ExtensionMethodsSource
+                {
+                    Methods = assemblyMethods
+                },
+                new ExtensionMethodsSource
+                {
+                    Methods = fileMethods
+                }
+            );
+            return lib;
         }
     }
 }

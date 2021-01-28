@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Emma.Core;
 
@@ -138,6 +139,24 @@ namespace Emma.XamlControls.ViewModels
         {
             SelectedMethod = selected.ExtensionMethod;
             OnPropertyChanged(nameof(SelectedMethod));
+            OnPropertyChanged(nameof(CodePreviewText));
+        }
+        
+        public string CodePreviewText
+        {
+            get
+            {
+                if (SelectedMethod is null) return "";
+                switch (SelectedMethod.SourceType)
+                {
+                    case ExtensionMethodSourceType.Assembly:
+                        return $"method is in assembly: {SelectedMethod.SourceLocation}";
+                    case ExtensionMethodSourceType.SourceCode:
+                        return SelectedMethod.Source.ToString();
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+            }
         }
     }
 }

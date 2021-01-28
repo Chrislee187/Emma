@@ -27,8 +27,8 @@ namespace Emma.Core.Adapters
             ExtendingType = NormaliseDotNetType(extendingType);
             ReturnType = NormaliseDotNetType(returnType);
             ParamTypes = prms.Select(NormaliseDotNetType).ToArray();
-            SourceType = ExtensionMethodSourceType.Assembly;
-            Source = null;
+            SourceType = ExtensionMethodSourceType.SourceCode;
+            Source = member.ToString();
             LastUpdated = lastUpdated;
             SourceLocation = sourceLocation;
             ClassName = className;

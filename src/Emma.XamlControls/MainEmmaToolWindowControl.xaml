@@ -102,11 +102,12 @@
                 Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" 
                 Height="100"
                 TabIndex="5"
+                ToolTip="Methods matching the filter criteria"
 
                 ItemsSource="{Binding Path=Methods}"
                 SelectionChanged="MethodsList_OnSelectionChanged"
-                ToolTip="Methods matching the filter criteria"
-            >
+                IsSynchronizedWithCurrentItem="True"
+                >
                 <ListBox.ItemTemplate>
                     <DataTemplate DataType="core:ExtensionMethod">
                         <StackPanel Orientation="Horizontal">
@@ -123,32 +124,15 @@
                 </ListBox.ItemTemplate>
             </ListBox>
             <TextBox x:Name="CodePreview" 
-                     FontFamily="Consolas" FontSize="16" 
-                     Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
-                     VerticalScrollBarVisibility="Auto"
-                     TextWrapping="Wrap"
-                     Height="100"
-                     TabIndex="6"
+                 FontFamily="Consolas" FontSize="16" 
+                 Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+                 VerticalScrollBarVisibility="Auto"
+                 TextWrapping="Wrap"
+                 Height="100"
+                 TabIndex="6"
 
-                     Text="
-01. Line Preview&#10;
-02. Line Preview&#10;
-03. Line Preview&#10;
-04. Line Preview&#10;
-05. Line Preview&#10;
-06. Line Preview&#10;
-07. Line Preview&#10;
-08. Line Preview&#10;
-09. Line Preview&#10;
-10. Line Preview&#10;
-No one could have believed that in the last years of the nineteenth century that human affairs
-were being watch from the timeless worlds of space. No one could have dreamed that we were being scrutinized, the
-way a man with a microscope studies creatures that swarm and multiply in a drop of water. Few men
-even considered the possibility of life on other planets, and yet, across the gulfs of space, minds
-immeasurably superior to ours, regarded this earth envious eyes, and slowly, but surely, they
-drew their plans against us.
-"
-            >
+                 Text="{Binding Path=CodePreviewText, Mode=OneWay}"
+                >
             </TextBox>
         </Grid>
     </StackPanel>

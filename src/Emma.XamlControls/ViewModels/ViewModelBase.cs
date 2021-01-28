@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Diagnostics;
 
-namespace Emma.XamlControls
+namespace Emma.XamlControls.ViewModels
 {
     public abstract class ViewModelBase : INotifyPropertyChanged, IDisposable
     {
