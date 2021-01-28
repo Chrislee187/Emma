@@ -17,6 +17,7 @@ namespace Emma.Core.Tests
         public class TestSource : ExtensionMethodsSource
         {
             public TestSource(IEnumerable<ExtensionMethod> methods)
+            : base(methods, DateTimeOffset.Now, SourceKind.Binary, null)
             {
                 Methods = methods;
                 LastUpdated = DateTime.Now;

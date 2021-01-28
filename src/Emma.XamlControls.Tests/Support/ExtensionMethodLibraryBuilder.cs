@@ -9,7 +9,7 @@ namespace Emma.XamlControls.Tests.Support
         public ExtensionMethodLibrary Build()
         {
             var mis = ExtensionMethodParser.Parse(typeof(MainEmmaToolWindowControl).Assembly);
-            var src = new ExtensionMethodsSource() { Methods = mis, LastUpdated = DateTimeOffset.Now };
+            var src = ExtensionMethodsSource.Create(typeof(MainEmmaToolWindowControl).Assembly);
 
 
             return new ExtensionMethodLibrary(src);

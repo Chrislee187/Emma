@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using Emma.Common.Cache;
 using GithubRepositoryModel;
 
@@ -10,9 +12,11 @@ namespace Emma.Common.MethodSources
         private readonly string _userName;
         private readonly string _repoName;
 
-        public GithubRepoExtensionMethodsSource(IGithub github, string localCacheId,
+        private GithubRepoExtensionMethodsSource(IGithub github, 
+            string localCacheId,
             string userName, string repoName,
             ExtensionMethodCache cache)
+        : base(new List<ExtensionMethod>(), DateTimeOffset.Now, SourceKind.Github, (userName, repoName))
         {
             _github = github;
             _cache = cache;

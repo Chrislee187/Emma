@@ -67,7 +67,6 @@
                 </Grid.ColumnDefinitions>
                 <Label FontWeight="Bold" 
                        Focusable="false"
-                       Target="SearchByExtendingType"
                        >_Extends</Label>
                 <ComboBox x:Name="SearchByExtendingType" 
                           Grid.Row="0" Grid.Column="1"
@@ -87,7 +86,6 @@
                 </Grid.ColumnDefinitions>
                 <Label FontWeight="Bold"
                        Focusable="false"
-                       Target="SearchByReturnType"
                        >_Returns</Label>
                 <ComboBox x:Name="SearchByReturnType"
                           Grid.Row="0" Grid.Column="1" 
@@ -123,17 +121,22 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-            <TextBox x:Name="CodePreview" 
-                 FontFamily="Consolas" FontSize="16" 
-                 Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
-                 VerticalScrollBarVisibility="Auto"
-                 TextWrapping="Wrap"
-                 Height="100"
-                 TabIndex="6"
-
-                 Text="{Binding Path=CodePreviewText, Mode=OneWay}"
-                >
-            </TextBox>
+            <Grid Grid.Row="2" Grid.ColumnSpan="2" >
+                <TextBox x:Name="CodePreview" 
+                     FontFamily="Consolas" FontSize="16" 
+                     Grid.Row="0"
+                     VerticalScrollBarVisibility="Auto"
+                     TextWrapping="Wrap"
+                     Height="100"
+                     TabIndex="6"
+                     Text="{Binding Path=CodePreviewText, Mode=OneWay}"
+                    >
+                </TextBox>
+                <Button x:Name="CopyToClipboard" 
+                    HorizontalAlignment="Right" VerticalAlignment="Top" Width="20" Height="20">
+                    Copy
+                </Button>
+            </Grid>
         </Grid>
     </StackPanel>
 </UserControl>
