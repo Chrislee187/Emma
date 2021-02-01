@@ -58,11 +58,13 @@ namespace Emma.XamlControls.ViewModels
         {
             get
             {
+                var orderedEnumerable = _emLibrary.Methods
+                    .Select(m => m.Name)
+                    .Distinct()
+                    .OrderBy(a => a);
                 return _memberNames ?? (_memberNames =
                     AnyItem.Concat(
-                    _emLibrary.Methods
-                    .Select(m => m.Name)
-                    .Distinct()));
+                    orderedEnumerable));
             }
         }
 
@@ -86,7 +88,8 @@ namespace Emma.XamlControls.ViewModels
                     AnyItem.Concat(
                         _emLibrary.Methods
                             .Select(m => m.ExtendingType)
-                            .Distinct()));
+                            .Distinct()
+                            .OrderBy(a => a)));
             }
         }
 
@@ -110,7 +113,8 @@ namespace Emma.XamlControls.ViewModels
                         AnyItem.Concat(
                             _emLibrary.Methods
                                 .Select(m => m.ReturnType)
-                                .Distinct())
+                                .Distinct()
+                                .OrderBy(a => a))
                     );
             }
         }

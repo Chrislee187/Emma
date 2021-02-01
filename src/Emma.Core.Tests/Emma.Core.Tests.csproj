@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Moq" Version="4.16.0" />
     <PackageReference Include="NUnit" Version="3.13.0" />
     <PackageReference Include="NUnit3TestAdapter" Version="4.0.0-beta.1" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.9.0-preview-20210106-01" />
@@ -15,12 +16,17 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Emma.Common\Emma.Common.csproj" />
+    <ProjectReference Include="..\Emma.XamlControls.Tests\Emma.XamlControls.Tests.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Compile Update="Support\SampleExtensionsClass.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Builders\" />
   </ItemGroup>
 
 </Project>

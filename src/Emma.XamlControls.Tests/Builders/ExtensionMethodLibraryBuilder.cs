@@ -1,8 +1,7 @@
-﻿using System;
-using Emma.Common;
+﻿using Emma.Common;
 using Emma.Common.MethodSources;
 
-namespace Emma.XamlControls.Tests.Support
+namespace Emma.XamlControls.Tests.Builders
 {
     public class ExtensionMethodLibraryBuilder
     {

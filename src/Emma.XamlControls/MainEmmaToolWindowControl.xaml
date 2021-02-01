@@ -32,6 +32,7 @@
                       ItemsSource="{Binding Path=MemberNames}"
                       SelectedValuePath="{Binding Path=MemberSearch}"
                       ToolTip="Filter by extension method name"
+                      
                       >
             </ComboBox>
             <Button Grid.Column="1" Width="25"

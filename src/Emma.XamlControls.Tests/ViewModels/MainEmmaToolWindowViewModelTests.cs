@@ -1,6 +1,7 @@
 ﻿using System;
 using Emma.Common;
 using Emma.Common.MethodSources;
+using Emma.XamlControls.Tests.Builders;
 using Emma.XamlControls.Tests.Support;
 using Emma.XamlControls.ViewModels;
 using NUnit.Framework;

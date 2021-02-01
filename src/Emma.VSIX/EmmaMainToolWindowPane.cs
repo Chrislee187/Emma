@@ -33,10 +33,12 @@ namespace Emma.VSIX
             // we are not calling Dispose on this object. This is because ToolWindowPane calls Dispose on
             // the object returned by the Content property.
 
-            var testSrc = ExtensionMethodsSource.Create(
-                    typeof(StringExtensions).Assembly);
-            var lib = new ExtensionMethodLibrary(testSrc);
-            
+            var src = new ExtensionMethodsSource(
+                new GithubRepoEmProvider("chrislee187", "methodbrary"),
+                new AppDataEmProvider("emma", $"github-methodbrary")
+                );
+            var lib = new ExtensionMethodLibrary(src);
+
             var mainEmmaToolWindowControl = new MainEmmaToolWindowControl();
             mainEmmaToolWindowControl.DataContext = new MainEmmaToolWindowViewModel(lib);
             this.Content = mainEmmaToolWindowControl;

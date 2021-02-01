@@ -94,17 +94,30 @@ namespace Emma.Common
         #endregion 
         #region Equality
 
-        protected bool Equals(ExtensionMethod other) => ToString() == other.ToString();
+        protected bool Equals(ExtensionMethod other)
+        {
+            return Name == other.Name && ExtendingType == other.ExtendingType && ReturnType == other.ReturnType && Equals(ParamTypes, other.ParamTypes);
+        }
 
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != GetType()) return false;
-            return Equals((ExtensionMethod)obj);
+            if (obj.GetType() != this.GetType()) return false;
+            return Equals((ExtensionMethod) obj);
         }
 
-        public override int GetHashCode() => ToString().GetHashCode();
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                var hashCode = (Name != null ? Name.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (ExtendingType != null ? ExtendingType.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (ReturnType != null ? ReturnType.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (ParamTypes != null ? ParamTypes.GetHashCode() : 0);
+                return hashCode;
+            }
+        }
 
         #endregion
         // ReSharper restore MemberCanBeProtected.Global -- JSON Serialisation

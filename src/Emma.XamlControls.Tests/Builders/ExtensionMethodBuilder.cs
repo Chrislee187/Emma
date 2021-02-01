@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Emma.Common;
 
-namespace Emma.XamlControls.Tests.Support
+namespace Emma.XamlControls.Tests.Builders
 {
     public class ExtensionMethodBuilder
     {

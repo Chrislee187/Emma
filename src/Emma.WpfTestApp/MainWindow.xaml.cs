@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -17,25 +18,20 @@ namespace Emma.WpfTestApp
         {
             var mainEmmaToolWindowControl = new MainEmmaToolWindowControl
             {
-                DataContext = new MainEmmaToolWindowViewModel(CreateTestLibrary().Result)
+                DataContext = new MainEmmaToolWindowViewModel(CreateTestLibrary())
             };
             Content = mainEmmaToolWindowControl;
             mainEmmaToolWindowControl.Focus();
         }
 
-        private static async Task<ExtensionMethodLibrary> CreateTestLibrary()
+        private static ExtensionMethodLibrary CreateTestLibrary()
         {
-            var assemblyMethods = ExtensionMethodParser.Parse(typeof(StringExtensions).ExtensionMethods());
-
-            var srcFile = @"..\..\..\Emma.Common\Extensions\StringExtensions.cs";
-            var src = File.ReadAllText(srcFile);
-            var fileMethods = ExtensionMethodParser.Parse(src, srcFile, lastUpdated: DateTimeOffset.Now);
-            
-            var lib = new ExtensionMethodLibrary(
-                ExtensionMethodsSource.Create(typeof(StringExtensions).Assembly)
-                
-                 , ExtensionMethodsSource.Create("chrislee187", "Methodbrary")
+            var src = new ExtensionMethodsSource(
+                new GithubRepoEmProvider("chrislee187", "methodbrary"),
+                new AppDataEmProvider("emma", $"github-methodbrary")
             );
+            
+            var lib = new ExtensionMethodLibrary(src);
             return lib;
         }
     }

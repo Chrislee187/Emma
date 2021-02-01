@@ -1,4 +1,5 @@
 ﻿using System.Threading;
+using Emma.XamlControls.Tests.Builders;
 using Emma.XamlControls.Tests.Support;
 using Emma.XamlControls.ViewModels;
 using NUnit.Framework;
