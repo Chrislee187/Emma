@@ -1,18 +1,20 @@
-﻿using Emma.Common;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Reflection;
+using System.Threading.Tasks;
+using Emma.Common;
 using Emma.Common.MethodSources;
+using Newtonsoft.Json;
 
 namespace Emma.XamlControls.Tests.Builders
 {
     public class ExtensionMethodLibraryBuilder
     {
-        public ExtensionMethodLibrary Build()
-        {
-            var mis = ExtensionMethodParser.Parse(typeof(MainEmmaToolWindowControl).Assembly);
-            var src = ExtensionMethodsSource.Create(typeof(MainEmmaToolWindowControl).Assembly);
-
-
-            return new ExtensionMethodLibrary(src);
-
-        }
+        public ExtensionMethodLibrary Build() =>
+            new ExtensionMethodLibrary(
+                EMSFactory.Create(typeof(MainEmmaToolWindowControl).Assembly)
+            );
     }
+
 }

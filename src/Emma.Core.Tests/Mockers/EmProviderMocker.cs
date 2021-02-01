@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Emma.Common;
+using Emma.Common.ExtensionMethodProviders;
 using Emma.Common.MethodSources;
 using Moq;
 

@@ -19,7 +19,7 @@ namespace Emma.XamlControls.Tests.ViewModels
         public void SetUp()
         {
             var mis = ExtensionMethodParser.Parse(typeof(MainEmmaToolWindowControl).Assembly);
-            var src = ExtensionMethodsSource.Create(typeof(MainEmmaToolWindowControl).Assembly);
+            var src = EMSFactory.Create(typeof(MainEmmaToolWindowControl).Assembly);
             var library = new ExtensionMethodLibrary(src);
             _viewModel = new MainEmmaToolWindowViewModel(library);
 
