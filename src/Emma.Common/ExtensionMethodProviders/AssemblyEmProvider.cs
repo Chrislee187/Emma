@@ -26,7 +26,7 @@ namespace Emma.Common.ExtensionMethodProviders
         public void SetCache(DateTimeOffset timestamp, IEnumerable<ExtensionMethod> extensionMethods) =>
             throw new NotImplementedException();
 
-        public Task<bool> Available() =>
+        public Task<bool> CacheAvailable() =>
             Task.FromResult(File.Exists(_filename));
     }
 }

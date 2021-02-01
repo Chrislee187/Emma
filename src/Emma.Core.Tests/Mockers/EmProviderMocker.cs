@@ -50,9 +50,9 @@ namespace Emma.Core.Tests.Mockers
         public void VerifySetCache(DateTimeOffset srcDate, IEnumerable<ExtensionMethod> srcMethods) =>
             _mock.Verify(m
                     => m.SetCache(
-                        It.Is<DateTimeOffset>(x => x == srcDate),
+                        It.Is<DateTimeOffset>(dto => dto == srcDate),
                         It.Is<IEnumerable<ExtensionMethod>>(
-                            m => m.SequenceEqual(srcMethods.ToArray()))),
+                            em => em.SequenceEqual(srcMethods.ToArray()))),
                 Times.Once);
     }
 }

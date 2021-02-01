@@ -48,7 +48,8 @@ namespace Emma.Common.ExtensionMethodProviders
 
         private void Init()
         {
-            if (!_initialised && Available().Result)
+            var cacheAvailable = File.Exists(_filename);
+            if (!_initialised && cacheAvailable)
             {
                 _timestamp = File.GetLastWriteTimeUtc(_filename);
                 var json = File.ReadAllText(_filename);
@@ -63,11 +64,6 @@ namespace Emma.Common.ExtensionMethodProviders
 
             File.WriteAllText(_filename, JsonConvert.SerializeObject(_extensionMethods));
             _initialised = true;
-        }
-
-        public Task<bool> Available()
-        {
-            return Task.FromResult(File.Exists(_filename));
         }
     }
 }
