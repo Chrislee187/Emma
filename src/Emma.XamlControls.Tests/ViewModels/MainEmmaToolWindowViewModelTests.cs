@@ -1,8 +1,6 @@
-﻿using System;
-using Emma.Common;
+﻿using Emma.Common;
 using Emma.Common.MethodSources;
 using Emma.XamlControls.Tests.Builders;
-using Emma.XamlControls.Tests.Support;
 using Emma.XamlControls.ViewModels;
 using NUnit.Framework;
 using Shouldly;
@@ -18,10 +16,9 @@ namespace Emma.XamlControls.Tests.ViewModels
         [SetUp]
         public void SetUp()
         {
-            var mis = ExtensionMethodParser.Parse(typeof(MainEmmaToolWindowControl).Assembly);
-            var src = EMSFactory.Create(typeof(MainEmmaToolWindowControl).Assembly);
-            var library = new ExtensionMethodLibrary(src);
-            _viewModel = new MainEmmaToolWindowViewModel(library);
+            _viewModel = new MainEmmaToolWindowViewModel(
+                new ExtensionMethodLibrary(
+                    EmsFactory.Create(typeof(MainEmmaToolWindowControl).Assembly)));
 
             PropertiesNotified.Clear();
             PropertiesNotified.Register(_viewModel);

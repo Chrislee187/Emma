@@ -2,7 +2,6 @@
 using System.Runtime.InteropServices;
 using Emma.Common;
 using Emma.Common.ExtensionMethodProviders;
-using Emma.Common.Extensions;
 using Emma.Common.MethodSources;
 using Emma.XamlControls;
 using Emma.XamlControls.ViewModels;

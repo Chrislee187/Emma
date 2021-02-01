@@ -1,9 +1,7 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using Emma.Common;
 using Emma.Common.Extensions;
-using Emma.Common.MethodSources;
 using Emma.Core.Tests.Support;
 using NUnit.Framework;
 using Shouldly;

@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
-using NUnit.Framework;
-using Shouldly;
+﻿using NUnit.Framework;
 
 namespace Emma.XamlControls.Tests
 {

@@ -67,8 +67,8 @@ namespace Emma.Common.ExtensionMethodProviders
         {
             if (_branch == null)
             {
-                _user = AsyncHelper.RunSynchronously(() => Client.User(_githubUsername));
-                _repo = AsyncHelper.RunSynchronously(() => _user.GetRepository(_reponame));
+                _user =   AsyncHelper.RunSynchronously(() => Client.User(_githubUsername));
+                _repo =  AsyncHelper.RunSynchronously(() => _user.GetRepository(_reponame));
                 _branch = AsyncHelper.RunSynchronously(() => _repo.GetBranch(_repo.DefaultBranch));
             }
         }

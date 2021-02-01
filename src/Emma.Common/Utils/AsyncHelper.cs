@@ -5,11 +5,7 @@ namespace Emma.Common.Utils
 {
     public static class AsyncHelper
     {
-        public static T RunSynchronously<T>(Func<Task<T>> func)
-        {
-            return Task.Run(async () => await func()).Result;
-        }
-
-
+        public static T RunSynchronously<T>(Func<Task<T>> func) => 
+            Task.Run(async () => await func()).Result;
     }
 }

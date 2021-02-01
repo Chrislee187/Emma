@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using Emma.Common;
 using Emma.Common.ExtensionMethodProviders;
-using Emma.Common.Extensions;
 using Emma.Common.MethodSources;
 using Emma.XamlControls;
 using Emma.XamlControls.ViewModels;

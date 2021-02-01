@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using Emma.Common;
 using Emma.XamlControls.Tests.Builders;
-using Emma.XamlControls.Tests.Support;
 
 namespace Emma.Core.Tests.Builders
 {
