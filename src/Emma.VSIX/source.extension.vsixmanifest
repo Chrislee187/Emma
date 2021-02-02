@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="Emma.VSIX.99742133-9249-4f22-9580-fc51b182c658" Version="1.0" Language="en-US" Publisher="Chris Lee" />
+        <Identity Id="Emma.VSIX.99742133-9249-4f22-9580-fc51b182c658" Version="1.1" Language="en-US" Publisher="Chris Lee" />
         <DisplayName>Emma</DisplayName>
         <Description xml:space="preserve">EMMA - The Extension Method Manager</Description>
     </Metadata>

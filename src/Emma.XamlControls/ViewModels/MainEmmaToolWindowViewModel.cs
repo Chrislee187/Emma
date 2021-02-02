@@ -153,7 +153,7 @@ namespace Emma.XamlControls.ViewModels
                     case ExtensionMethodSourceType.Assembly:
                         return $"method is in assembly: {SelectedMethod.SourceLocation}";
                     case ExtensionMethodSourceType.SourceCode:
-                        return SelectedMethod.Source.ToString();
+                        return "\t" + SelectedMethod.Source.ToString() + "\n";
                     default:
                         throw new ArgumentOutOfRangeException();
                 }

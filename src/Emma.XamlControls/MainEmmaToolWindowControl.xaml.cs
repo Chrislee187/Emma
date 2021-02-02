@@ -54,5 +54,8 @@ namespace Emma.XamlControls
         {
             ShowState();
         }
+
+        private void CopyToClipboard_OnClick(object sender, RoutedEventArgs e) => 
+            Clipboard.SetDataObject(ViewModel.CodePreviewText);
     }
 }
