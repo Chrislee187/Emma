@@ -51,6 +51,8 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\SelectableTextBlock.cs" />
+    <Compile Include="Controls\TextEditorWrapper.cs" />
     <Compile Include="ViewModels\ExtensionMethodViewModel.cs" />
     <Compile Include="MainEmmaToolWindowControl.xaml.cs">
       <DependentUpon>MainEmmaToolWindowControl.xaml</DependentUpon>

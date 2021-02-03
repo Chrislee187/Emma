@@ -5,8 +5,11 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:xamlControls="clr-namespace:Emma.XamlControls"
              xmlns:common="clr-namespace:Emma.Common;assembly=Emma.Common"
+             xmlns:controls="clr-namespace:Emma.XamlControls.Controls"
              mc:Ignorable="d" 
-             d:DesignWidth="400" 
+             VerticalAlignment="Stretch"
+             d:DesignWidth="300"
+             MinWidth="300"
              
              >
     <UserControl.Resources>
@@ -18,61 +21,64 @@
         </ResourceDictionary>
 
     </UserControl.Resources>
-    <StackPanel Orientation="Vertical" VerticalAlignment="Top" CanHorizontallyScroll="True" CanVerticallyScroll="True"
-    >
-        <Grid>
+    <DockPanel VerticalAlignment="Stretch" 
+            HorizontalAlignment="Stretch"
+            LastChildFill="true">
+        <!-- Search by name -->
+        <Grid DockPanel.Dock="Top">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             <ComboBox Width="Auto" IsEditable="True" 
-                      x:Name="SearchByName" x:FieldModifier="public"
-                      TabIndex="0"
-                      Text="{Binding Path=MemberSearch}" 
-                      ItemsSource="{Binding Path=MemberNames}"
-                      SelectedValuePath="{Binding Path=MemberSearch}"
-                      ToolTip="Filter by extension method name"
-                      
-                      >
+                              x:Name="SearchByName" x:FieldModifier="public"
+                              TabIndex="0"
+                              Text="{Binding Path=MemberSearch}" 
+                              ItemsSource="{Binding Path=MemberNames}"
+                              SelectedValuePath="{Binding Path=MemberSearch}"
+                              ToolTip="Filter by extension method name"
+                              
+                              >
             </ComboBox>
             <Button Grid.Column="1" Width="25"
-                    x:Name="SearchButton" 
-                    TabIndex="3"
-                    Click="SearchButton_Click">
+                            x:Name="SearchButton" 
+                            TabIndex="3"
+                            Click="SearchButton_Click">
 
                 <Button.Background>
                     <ImageBrush ImageSource="Resources/Search.png"/>
                 </Button.Background>
             </Button>
             <Button Grid.Column="2" Width="25"
-                    TabIndex="4"
-                    Click="SettingsButton_Click"
-                    >...
+                            TabIndex="4"
+                            Click="SettingsButton_Click"
+                            >...
             </Button>
 
         </Grid>
-        <Grid>
+        <!-- Search by Return Type and Extending Type -->
+        <Grid DockPanel.Dock="Top">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
-            <Grid Grid.Row="0" Grid.Column="0" >
+            <Grid Grid.Row="0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="11*"/>
                 </Grid.ColumnDefinitions>
                 <Label FontWeight="Bold" 
-                       Focusable="false"
-                       >_Extends</Label>
+                               Focusable="True"
+                               >_Extends</Label>
                 <ComboBox x:Name="SearchByExtendingType" 
-                          Grid.Row="0" Grid.Column="1"
-                          HorizontalAlignment="Stretch"
-                          ItemsSource="{Binding Path=ExtendingTypes}"
-                          SelectedItem="{Binding Path=ExtendingTypeSearch}"
-                          ToolTip="Filter by extension method Extending type"
-                          TabIndex="1"
-                >
+                                  Grid.Column="1"
+                                  HorizontalAlignment="Stretch"
+                                  ItemsSource="{Binding Path=ExtendingTypes}"
+                                  SelectedItem="{Binding Path=ExtendingTypeSearch}"
+                                  ToolTip="Filter by extension method Extending type"
+                                  TabIndex="1"
+                        >
 
                 </ComboBox>
             </Grid>
@@ -82,27 +88,31 @@
                     <ColumnDefinition Width="11*"/>
                 </Grid.ColumnDefinitions>
                 <Label FontWeight="Bold"
-                       Focusable="false"
-                       >_Returns</Label>
+                               Focusable="false"
+                               >_Returns</Label>
                 <ComboBox x:Name="SearchByReturnType"
-                          Grid.Row="0" Grid.Column="1" 
-                          HorizontalAlignment="Stretch"
-                          ItemsSource="{Binding Path=ReturnTypes}"
-                          SelectedItem="{Binding Path=ReturnTypeSearch}"
-                          ToolTip="Filter by extension method Return type"
-                          TabIndex="2"
-                />
+                                  Grid.Row="0" Grid.Column="1" 
+                                  HorizontalAlignment="Stretch"
+                                  ItemsSource="{Binding Path=ReturnTypes}"
+                                  SelectedItem="{Binding Path=ReturnTypeSearch}"
+                                  ToolTip="Filter by extension method Return type"
+                                  TabIndex="2"
+                        />
             </Grid>
+        </Grid>
+        <!-- Methods List-->
+        <Grid DockPanel.Dock="Top">
             <ListBox x:Name="MethodsList" x:FieldModifier="public"
-                Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" 
-                Height="100"
-                TabIndex="5"
-                ToolTip="Methods matching the filter criteria"
+                        
+                        Height="100"
+                        MinHeight="50"
+                        TabIndex="5"
+                        ToolTip="Methods matching the filter criteria"
 
-                ItemsSource="{Binding Path=Methods}"
-                SelectionChanged="MethodsList_OnSelectionChanged"
-                IsSynchronizedWithCurrentItem="True"
-                >
+                        ItemsSource="{Binding Path=Methods}"
+                        SelectionChanged="MethodsList_OnSelectionChanged"
+                        IsSynchronizedWithCurrentItem="True"
+                        >
                 <ListBox.ItemTemplate>
                     <DataTemplate DataType="common:ExtensionMethod">
                         <StackPanel Orientation="Horizontal">
@@ -118,27 +128,29 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-         </Grid>
-        <Grid >
-
-            <TextBox x:Name="CodePreview" 
-                     FontFamily="Consolas" FontSize="16" 
-                     Grid.Row="0"
-                     VerticalScrollBarVisibility="Visible"
-                     TextWrapping="Wrap"
-                     TabIndex="6"
-                     Text="{Binding Path=CodePreviewText, Mode=OneWay}"
-                     Padding="5" Margin="0,0,0,-100"
-                     
-            />
+        </Grid>
+        <!-- Code Preview -->
+        <Grid DockPanel.Dock="Top" VerticalAlignment="Stretch" >
+                <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Auto">
+                    <Border>
+                    <controls:SelectableTextBlock 
+                        x:Name="CodePreview"
+                        FontFamily="Consolas" 
+                        FontSize="16" 
+                        TextWrapping="NoWrap"
+                        VerticalAlignment="Top"
+                        MinHeight="50"
+Text="{Binding Path=CodePreviewText, Mode=OneWay}"
+                    />
+                    </Border>
+            </ScrollViewer>
             <Button x:Name="CopyToClipboard" Click="CopyToClipboard_OnClick" 
                     HorizontalAlignment="Right" VerticalAlignment="Top" 
-                    Margin="0 10 10 0"
+                    Margin="0 10 50 0"
                     Padding="5 2"
                     Content="Copy"
                     Grid.Row="0"
             />
-
         </Grid>
-    </StackPanel>
+    </DockPanel>
 </UserControl>

@@ -4,7 +4,7 @@
         <Identity Id="Emma.VSIX.99742133-9249-4f22-9580-fc51b182c658" Version="0.1" Language="en-US" Publisher="Chris Lee" />
         <DisplayName>Emma</DisplayName>
         <Description xml:space="preserve">EMMA - The Extension Method Manager</Description>
-        <MoreInfo>www.github.com\chrislee187\emma</MoreInfo>
+        <MoreInfo>https://www.github.com/chrislee187/emma</MoreInfo>
     </Metadata>
     <Installation>
         <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[16.0, 17.0)" />

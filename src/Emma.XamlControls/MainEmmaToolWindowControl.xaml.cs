@@ -23,6 +23,7 @@ namespace Emma.XamlControls
 
             SearchByName.Focus();
 
+
         }
 
         private void SearchButton_Click(object sender, RoutedEventArgs e)

@@ -10,9 +10,9 @@ namespace Emma.WpfTestApp
 
         private void App_OnStartup(object sender, StartupEventArgs e)
         {
-            var app = (App) sender;
-            app.MainWindow = new MainWindow();
-            app.MainWindow.Show();
+            // var app = (App) sender;
+            // app.MainWindow = new MainWindow2();
+            // app.MainWindow.Show();
         }
     }
 }

@@ -14,11 +14,12 @@ Settings - dropdown menu from the settings button on the main EMMA window?
 	*	Enable/Disable of default Methodbrary
 	*	Add custom sources for extension methods
 	*	Ability to force a refresh on an Extension Method Source
+* Release to VS gallery
 
 # UI Tweaks
 
 * Better UX flow, everything should be able to do be done easily with keyboard, without resorting to mouse
-* HSplitter between the `CodePreview` textbox and `Methods` listbox
 * `CodePreview` textbox should fill the vertical space.
+* HSplitter between the `CodePreview` textbox and `Methods` listbox
 * Make the tool honour the VS theme?
 
