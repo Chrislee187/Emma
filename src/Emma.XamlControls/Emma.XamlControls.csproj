@@ -96,10 +96,6 @@
     <Resource Include="Resources\Search.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\GithubRepositoryModel\src\GithubRepositoryModel\GithubRepositoryModel.csproj">
-      <Project>{24a2e433-1bae-4df3-bcaf-1e80e9791286}</Project>
-      <Name>GithubRepositoryModel</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Emma.Common\Emma.Common.csproj">
       <Project>{bc6ec01b-158a-4a26-a4c8-766bc113ac17}</Project>
       <Name>Emma.Common</Name>

@@ -80,10 +80,6 @@
     <Content Include="Resources\MenuIcons.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\GithubRepositoryModel\src\GithubRepositoryModel\GithubRepositoryModel.csproj">
-      <Project>{24A2E433-1BAE-4DF3-BCAF-1E80E9791286}</Project>
-      <Name>GithubRepositoryModel</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Emma.Common\Emma.Common.csproj">
       <Project>{BC6EC01B-158A-4A26-A4C8-766BC113AC17}</Project>
       <Name>Emma.Common</Name>

@@ -5,10 +5,6 @@ VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Emma.Core.Tests", "Emma.Core.Tests\Emma.Core.Tests.csproj", "{A2DC46BF-3660-4865-9635-FAB99B9731FE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GithubRepositoryModel", "..\..\GithubRepositoryModel\src\GithubRepositoryModel\GithubRepositoryModel.csproj", "{24A2E433-1BAE-4DF3-BCAF-1E80E9791286}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GithubRepositoryModel.Tests", "..\..\GithubRepositoryModel\src\GithubRepositoryModel.Tests\GithubRepositoryModel.Tests.csproj", "{0B0E885F-367A-4481-8E36-0327E041B096}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Emma.XamlControls", "Emma.XamlControls\Emma.XamlControls.csproj", "{4E446259-AEE6-41DF-B0F0-E724EAEA4FFD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Emma.WpfTestApp", "Emma.WpfTestApp\Emma.WpfTestApp.csproj", "{0CD9EDA5-8D47-4F72-8308-25C7E4B581E9}"
@@ -35,14 +31,6 @@ Global
 		{A2DC46BF-3660-4865-9635-FAB99B9731FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A2DC46BF-3660-4865-9635-FAB99B9731FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A2DC46BF-3660-4865-9635-FAB99B9731FE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{24A2E433-1BAE-4DF3-BCAF-1E80E9791286}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{24A2E433-1BAE-4DF3-BCAF-1E80E9791286}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{24A2E433-1BAE-4DF3-BCAF-1E80E9791286}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{24A2E433-1BAE-4DF3-BCAF-1E80E9791286}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0B0E885F-367A-4481-8E36-0327E041B096}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0B0E885F-367A-4481-8E36-0327E041B096}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0B0E885F-367A-4481-8E36-0327E041B096}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0B0E885F-367A-4481-8E36-0327E041B096}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4E446259-AEE6-41DF-B0F0-E724EAEA4FFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4E446259-AEE6-41DF-B0F0-E724EAEA4FFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4E446259-AEE6-41DF-B0F0-E724EAEA4FFD}.Release|Any CPU.ActiveCfg = Release|Any CPU

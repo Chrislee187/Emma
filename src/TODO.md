@@ -22,7 +22,6 @@ Settings - dropdown menu from the settings button on the main EMMA window?
 # UI Tweaks
 
 * Better UX flow, everything should be able to do be done easily with keyboard, without resorting to mouse
-* `CodePreview` textbox should fill the vertical space.
+* ~~DONE `CodePreview` textbox should fill the vertical space.~~
 * HSplitter between the `CodePreview` textbox and `Methods` listbox
-* Make the tool honour the VS theme?
 

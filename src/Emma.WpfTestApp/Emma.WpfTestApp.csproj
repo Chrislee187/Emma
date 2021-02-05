@@ -38,11 +38,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="GithubRepositoryModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GithubRepositoryModel.1.0.0\lib\netstandard2.0\GithubRepositoryModel.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeAnalysis, Version=3.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeAnalysis.Common.3.8.0\lib\netstandard2.0\Microsoft.CodeAnalysis.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CodeAnalysis.CSharp, Version=3.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeAnalysis.CSharp.3.8.0\lib\netstandard2.0\Microsoft.CodeAnalysis.CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Octokit, Version=0.48.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Octokit.0.48.0\lib\net46\Octokit.dll</HintPath>
     </Reference>
     <Reference Include="Serilog, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
       <HintPath>..\packages\Serilog.2.10.0\lib\net46\Serilog.dll</HintPath>
@@ -134,10 +140,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\GithubRepositoryModel\src\GithubRepositoryModel\GithubRepositoryModel.csproj">
-      <Project>{24A2E433-1BAE-4DF3-BCAF-1E80E9791286}</Project>
-      <Name>GithubRepositoryModel</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Emma.Common\Emma.Common.csproj">
       <Project>{bc6ec01b-158a-4a26-a4c8-766bc113ac17}</Project>
       <Name>Emma.Common</Name>
