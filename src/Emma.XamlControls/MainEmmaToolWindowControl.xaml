@@ -4,7 +4,6 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:xamlControls="clr-namespace:Emma.XamlControls"
-             xmlns:common="clr-namespace:Emma.Common;assembly=Emma.Common"
              xmlns:controls="clr-namespace:Emma.XamlControls.Controls"
              mc:Ignorable="d" 
              VerticalAlignment="Stretch"
@@ -13,11 +12,42 @@
              
              >
     <UserControl.Resources>
-        <ResourceDictionary>
+        <ResourceDictionary 
+            >
+
             <xamlControls:ParamsToSignatureConverter
                 x:Key="ParamTypesConverter">
 
             </xamlControls:ParamsToSignatureConverter>
+            <Style TargetType="Control" x:Key="DefaultControlStyle" >
+                <Setter Property="Background" Value="AliceBlue"/>
+                <Setter Property="Foreground" Value="Black"/>
+                <Setter Property="FontFamily" Value="Lucida Console"/>
+            </Style>
+
+            <Style TargetType="controls:SelectableTextBlock" x:Key="DefaultTextStyle" >
+                <Setter Property="Background" Value="AliceBlue"/>
+                <Setter Property="Foreground" Value="Black"/>
+                <Setter Property="FontFamily" Value="Lucida Console"/>
+            </Style>
+            <Style TargetType="ComboBox"
+                   BasedOn="{StaticResource DefaultControlStyle}"
+            >
+            </Style>
+            <Style TargetType="DockPanel">
+                <Setter Property="Background" Value="AliceBlue"/>
+            </Style>
+
+            <Style TargetType="ListBox"
+                   BasedOn="{StaticResource DefaultControlStyle}"
+            >
+            </Style>
+            <Style TargetType="controls:SelectableTextBlock"
+                   BasedOn="{StaticResource DefaultTextStyle}"
+            >
+                <Setter Property="FontSize" Value="16"/>
+
+            </Style>
         </ResourceDictionary>
 
     </UserControl.Resources>
@@ -78,6 +108,7 @@
                                   SelectedItem="{Binding Path=ExtendingTypeSearch}"
                                   ToolTip="Filter by extension method Extending type"
                                   TabIndex="1"
+                                  MaxDropDownHeight="0"
                         >
 
                 </ComboBox>
@@ -131,18 +162,15 @@
         </Grid>
         <!-- Code Preview -->
         <Grid DockPanel.Dock="Top" VerticalAlignment="Stretch" >
-                <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Auto">
-                    <Border>
-                    <controls:SelectableTextBlock 
-                        x:Name="CodePreview"
-                        FontFamily="Consolas" 
-                        FontSize="16" 
-                        TextWrapping="NoWrap"
-                        VerticalAlignment="Top"
-                        MinHeight="50"
-Text="{Binding Path=CodePreviewText, Mode=OneWay}"
-                    />
-                    </Border>
+            <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Auto">
+                <controls:SelectableTextBlock 
+                    Text="{Binding Path=CodePreviewText, Mode=OneWay}"
+                    x:Name="CodePreview"
+                    TextWrapping="NoWrap"
+                    VerticalAlignment="Top"
+                    MinHeight="50"
+                >
+                    </controls:SelectableTextBlock>
             </ScrollViewer>
             <Button x:Name="CopyToClipboard" Click="CopyToClipboard_OnClick" 
                     HorizontalAlignment="Right" VerticalAlignment="Top" 

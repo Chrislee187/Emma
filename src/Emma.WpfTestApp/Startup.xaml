@@ -12,8 +12,15 @@
     <!-- WindowWidth="500" WindowHeight="300" -->
 
     <Grid >
-        <xamlControls:MainEmmaToolWindowControl 
+        <xamlControls:MainEmmaToolWindowControl
                                                 x:Name="EmmaControl" 
         />
+        <StackPanel Visibility="Visible"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    >
+            <TextBlock FontSize="24"  Visibility="Hidden"
+                       Foreground="Blue">Loading...</TextBlock>
+        </StackPanel>
     </Grid>
 </Page>

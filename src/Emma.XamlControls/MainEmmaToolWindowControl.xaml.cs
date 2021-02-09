@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 using Emma.XamlControls.ViewModels;
 
@@ -14,16 +15,19 @@ namespace Emma.XamlControls
             Focusable = true;
             IsTabStop = true;
 
-            // var textBox = SearchByName.FindChild("PART_EditableTextBox",typeof(TextBox)) as TextBox;
-            // textBox?.Focus();
-            // var textBox = SearchByName.Template.FindName("PART_EditableTextBox",SearchByName) as TextBox;
-            // textBox?.Focus();
-            // var textBox = this.FindChild("PART_EditableTextBox",typeof(TextBox)) as TextBox;
-            // textBox?.Focus();
 
+        }
+
+        protected override void OnGotFocus(RoutedEventArgs e)
+        {
+            base.OnGotFocus(e);
             SearchByName.Focus();
+        }
 
 
+        protected override void OnInitialized(EventArgs e)
+        {
+            base.OnInitialized(e);
         }
 
         private void SearchButton_Click(object sender, RoutedEventArgs e)

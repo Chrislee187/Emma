@@ -71,9 +71,4 @@ namespace Emma.Common
             DateTimeOffset lastUpdated) => 
                 new MemberSyntaxListExtensionMethods(members, sourceLocation, lastUpdated).ToArray();
     }
-
-    public enum ExtensionMethodSourceType
-    {
-        Assembly, SourceCode
-    }
 }

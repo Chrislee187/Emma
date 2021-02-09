@@ -5,6 +5,7 @@ using Emma.Common.ExtensionMethodProviders;
 using Emma.Common.MethodSources;
 using Emma.XamlControls;
 using Emma.XamlControls.ViewModels;
+using Microsoft.VisualStudio.PlatformUI;
 
 namespace Emma.VSIX
 {
@@ -43,5 +44,6 @@ namespace Emma.VSIX
             mainEmmaToolWindowControl.DataContext = new MainEmmaToolWindowViewModel(lib);
             this.Content = mainEmmaToolWindowControl;
         }
+
     }
 }

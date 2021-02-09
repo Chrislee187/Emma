@@ -4,8 +4,7 @@
 * Shortcuts for the return/extending types not working (ALT-E, ALT-R)
 
 # TODOS
-
-* Honour the currently active VS Theme (i.e. Dark) better.
+* Better implementation of the github key support, use `Microsoft.Extensions.Configuration` to support ENV VAR and JSON
 * HOTKEY: Pressing return on the Methods list should activate the Copy feature
 * After copying text to clipboard, can we return to our code point?
 * Automatically add the selected extension method to a file (adding file if necessary) to a selected project (prompt user?)
@@ -22,6 +21,9 @@ Settings - dropdown menu from the settings button on the main EMMA window?
 # UI Tweaks
 
 * Better UX flow, everything should be able to do be done easily with keyboard, without resorting to mouse
-* ~~DONE `CodePreview` textbox should fill the vertical space.~~
 * HSplitter between the `CodePreview` textbox and `Methods` listbox
 
+# DONE
+* ~~`CodePreview` textbox should fill the vertical space.~~
+* ~~Honour the currently active VS Theme (i.e. Dark) better.~~
+  * NOTE: Doesn't seem to be possible for default WPF controls to inherit the default style from visual studio. Set some simple colours to ensure consistency for now.

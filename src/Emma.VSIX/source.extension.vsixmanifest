@@ -5,6 +5,7 @@
         <DisplayName>Emma</DisplayName>
         <Description xml:space="preserve">EMMA - The Extension Method Manager</Description>
         <MoreInfo>https://www.github.com/chrislee187/emma</MoreInfo>
+        <Tags>"extension methods"</Tags>
     </Metadata>
     <Installation>
         <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[16.0, 17.0)" />
