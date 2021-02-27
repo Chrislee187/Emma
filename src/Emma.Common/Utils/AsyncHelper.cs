@@ -7,5 +7,11 @@ namespace Emma.Common.Utils
     {
         public static T RunSynchronously<T>(Func<Task<T>> func) => 
             Task.Run(async () => await func()).Result;
+
+        public static T RunSynchronously2<T>(Func<Task<T>> func) =>
+            Task.Run(async () => await func()).Result;
+
+
     }
+
 }

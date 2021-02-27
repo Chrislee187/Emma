@@ -16,7 +16,8 @@ namespace Emma.XamlControls.ViewModels
 
         #region Method List Filtering Properties
         public IEnumerable<ExtensionMethodViewModel> Methods => _emLibrary.Find(Query)
-            .Select(ExtensionMethodViewModel.Create);
+            .Select(ExtensionMethodViewModel.Create)
+            .OrderBy(em => em.Name);
 
         string MatchAny(string s) => s == AnyItemIndicator ? "" : s;
         private ExtensionMethodQuery _query;
@@ -36,6 +37,8 @@ namespace Emma.XamlControls.ViewModels
                         ReturnTypeMatchMode = StringMatchMode.Equals
                     };
                     _query.Insensitive = true;
+                    _returnTypes = null;
+                    _extendingTypes = null;
                 }
 
                 return _query;
@@ -133,8 +136,14 @@ namespace Emma.XamlControls.ViewModels
             _emLibrary = emLibrary;
         }
 
-        public void Search() => 
+        public void Search()
+        {
+            _returnTypes = null;
+            // OnPropertyChanged(nameof(ReturnTypes));
+            _extendingTypes = null;
+            // OnPropertyChanged(nameof(ExtendingTypes));
             OnPropertyChanged(nameof(Methods));
+        }
 
         public void MethodSelected(ExtensionMethodViewModel selected)
         {

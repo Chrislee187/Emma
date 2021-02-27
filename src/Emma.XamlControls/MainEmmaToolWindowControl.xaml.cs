@@ -58,6 +58,7 @@ namespace Emma.XamlControls
         private void SettingsButton_Click(object sender, RoutedEventArgs e)
         {
             ShowState();
+
         }
 
         private void CopyToClipboard_OnClick(object sender, RoutedEventArgs e) => 

@@ -11,9 +11,9 @@ namespace Emma.VSIX
 
         public static readonly Guid CommandSet = new Guid("ccc2699a-6608-42ea-a6a6-3764e617d764");
 
-        private readonly AsyncPackage _package;
+        private readonly EmmaPackage _package;
 
-        private EmmaCommand(AsyncPackage package, OleMenuCommandService commandService)
+        private EmmaCommand(EmmaPackage package, OleMenuCommandService commandService)
         {
             _package = package ?? throw new ArgumentNullException(nameof(package));
             commandService = commandService ?? throw new ArgumentNullException(nameof(commandService));
@@ -21,6 +21,7 @@ namespace Emma.VSIX
             var menuCommandID = new CommandID(CommandSet, CommandId);
             var menuItem = new MenuCommand(this.Execute, menuCommandID);
             commandService.AddCommand(menuItem);
+
         }
 
         public static EmmaCommand Instance
@@ -40,13 +41,14 @@ namespace Emma.VSIX
 
             // NOTE: hotkey is regsitered in VSCommandsTable.csvt
             // see also https://stackoverflow.com/questions/10392622/how-to-make-a-shortcut-to-run-a-vsix-method
-            Instance = new EmmaCommand(package, commandService);
+            Instance = new EmmaCommand(package as EmmaPackage, commandService);
         }
 
         private void Execute(object sender, EventArgs e)
         {
             this._package.JoinableTaskFactory.RunAsync(async delegate
             {
+
                 var window = await this._package.ShowToolWindowAsync(
                     typeof(EmmaMainToolWindowPane), 0, true, this._package.DisposalToken);
                 
