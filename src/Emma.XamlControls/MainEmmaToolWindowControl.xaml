@@ -7,14 +7,7 @@
              xmlns:controls="clr-namespace:Emma.XamlControls.Controls"
              xmlns:common="clr-namespace:Emma.Common;assembly=Emma.Common"
              mc:Ignorable="d" 
-             VerticalAlignment="Stretch"
-             d:DesignWidth="300"
-             MinWidth="600"
-             Width="300"
              >
-    <!-- Background="{DynamicResource {x:Static SystemColors.}}" -->
-    <!-- Foreground="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" -->
-
     <UserControl.Resources>
         <ResourceDictionary 
             >
@@ -56,8 +49,8 @@
         </ResourceDictionary>
 
     </UserControl.Resources>
-    <DockPanel VerticalAlignment="Stretch" 
-            HorizontalAlignment="Stretch"
+    <DockPanel 
+        VerticalAlignment="Stretch"
             LastChildFill="true">
         <!-- Search by name -->
         <Grid DockPanel.Dock="Top">
@@ -145,7 +138,7 @@
             <ListBox x:Name="MethodsList" x:FieldModifier="public"
                         
                         Height="100"
-                        MinHeight="50"
+                        MinHeight="100"
                         TabIndex="5"
                         ToolTip="Methods matching the filter criteria"
 

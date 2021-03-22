@@ -5,22 +5,19 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:xamlControls="clr-namespace:Emma.XamlControls;assembly=Emma.XamlControls"
       mc:Ignorable="d" 
-      d:DesignWidth="600" d:DesignHeight="300"
       WindowTitle="Startup"
       x:Name="StartupPage"
       >
     <!-- WindowWidth="500" WindowHeight="300" -->
 
-    <Grid >
         <xamlControls:MainEmmaToolWindowControl
                                                 x:Name="EmmaControl" 
         />
-        <StackPanel Visibility="Visible"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
-                    >
-            <TextBlock FontSize="24"  Visibility="Hidden"
-                       Foreground="Blue">Loading...</TextBlock>
-        </StackPanel>
-    </Grid>
+        <!-- <StackPanel Visibility="Visible" -->
+        <!--             HorizontalAlignment="Center" -->
+        <!--             VerticalAlignment="Center" -->
+        <!--             > -->
+        <!--     <TextBlock FontSize="24"  Visibility="Hidden" -->
+        <!--                Foreground="Blue">Loading...</TextBlock> -->
+        <!-- </StackPanel> -->
 </Page>
