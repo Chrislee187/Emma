@@ -7,7 +7,6 @@ using System.Reflection;
 using System.Threading.Tasks;
 using Emma.Common.Adapters;
 using Emma.Common.Extensions;
-using GithubRepositoryModel;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
@@ -44,41 +43,6 @@ namespace Emma.Common
 
                 return ems;
             });
-        }
-
-        public static async Task<IEnumerable<ExtensionMethod>> 
-            Parse(GhFolder folder) => await ParseGithubFolder(folder);
-
-        private static async Task<IEnumerable<ExtensionMethod>> ParseGithubFolder(GhFolder folder)
-        {
-            var list = new List<ExtensionMethod>();
-
-            var ghFolders = await folder.GetFolders();
-            foreach (var ghFolder in ghFolders)
-            {
-                list.AddRange(await ParseGithubFolder(ghFolder));
-            }
-
-            var fileContents = await folder.GetFiles();
-            list.AddRange(ParseGithubFiles(fileContents));
-
-            return list;
-        }
-
-        private static IEnumerable<ExtensionMethod> ParseGithubFiles(IEnumerable<GhFile> fileContents)
-        {
-            var list = new List<ExtensionMethod>();
-
-            foreach (var file in fileContents)
-            {
-                if (Path.GetExtension(file.Name)?.ToLowerInvariant() == ".cs")
-                {
-                    var text = file.Content;
-                    list.AddRange(Parse(text, file.Path, file.LastCommit.Commit.Committer.Date));
-                }
-            }
-
-            return list;
         }
 
         private static IEnumerable<ExtensionMethod> ParseSyntax(

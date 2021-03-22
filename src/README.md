@@ -2,8 +2,6 @@
 
 A simple tool aid in reusing extension methods by offering a selection extension methods, which filtered by extending type, return type and/or name as required and copies a selected method to the ClipBoard ready for quick insertion in to your project.
 
-*NOTE: Requires a valid Github Auth key (see below)*
-
 
 # What does is it actually do then?
 

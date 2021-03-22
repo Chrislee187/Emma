@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.Shell;
+﻿using System;
+using Microsoft.VisualStudio.Shell;
 using System.Runtime.InteropServices;
 using System.Windows;
 using Emma.Common;
@@ -6,7 +7,6 @@ using Emma.Common.ExtensionMethodProviders;
 using Emma.Common.MethodSources;
 using Emma.XamlControls;
 using Emma.XamlControls.ViewModels;
-using Octokit;
 
 
 namespace Emma.VSIX
@@ -44,29 +44,21 @@ namespace Emma.VSIX
             var repo = string.IsNullOrEmpty(opts.DefaultMethodbraryRepo) 
                 ? DefaultMethodbrary : opts.DefaultMethodbraryRepo;
 
-            try
+            var emProvider = new GithubCloneEmProvider(repo);
+            var appDataEmProvider = new AppDataEmProvider("emma", $"default-methodbrary");
+            
+            var src = new ExtensionMethodsSource(
+                emProvider,
+                appDataEmProvider
+            );
+
+            var lib = new ExtensionMethodLibrary(src);
+
+            var mainEmmaToolWindowControl = new MainEmmaToolWindowControl
             {
-                var emProvider = new GithubCloneEmProvider(repo);
-                var appDataEmProvider = new AppDataEmProvider("emma", $"default-methodbrary");
-                
-                var src = new ExtensionMethodsSource(
-                    emProvider,
-                    appDataEmProvider
-                );
-
-                var lib = new ExtensionMethodLibrary(src);
-
-                var mainEmmaToolWindowControl = new MainEmmaToolWindowControl
-                {
-                    DataContext = new MainEmmaToolWindowViewModel(lib)
-                };
-                this.Content = mainEmmaToolWindowControl;
-            }
-            catch (NotFoundException e)
-            {
-                MessageBox.Show($"Github repo {repo} not found!");
-            }
-
+                DataContext = new MainEmmaToolWindowViewModel(lib)
+            };
+            this.Content = mainEmmaToolWindowControl;
         }
 
         private OptionPageGrid _options;
