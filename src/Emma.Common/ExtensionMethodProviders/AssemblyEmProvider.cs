@@ -16,10 +16,10 @@ namespace Emma.Common.ExtensionMethodProviders
             _asm = asm;
             _filename = _asm.Location;
         }
-        public Task<DateTimeOffset> LastUpdated() =>
+        public Task<DateTimeOffset> LastUpdated(bool refresh = false) =>
             Task.FromResult(new DateTimeOffset(File.GetLastWriteTimeUtc(_filename)));
 
-        public Task<IEnumerable<ExtensionMethod>> Provide() =>
+        public Task<IEnumerable<ExtensionMethod>> Provide(bool refresh = false) =>
             Task.FromResult(ExtensionMethodParser.Parse(_asm)
             );
 

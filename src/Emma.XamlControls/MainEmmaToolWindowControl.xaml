@@ -28,7 +28,7 @@
                 <!-- <Setter Property="Foreground" Value="Black"/> -->
                 <Setter Property="FontFamily" Value="Lucida Console"/>
             </Style>
-            
+
             <Style TargetType="controls:SelectableTextBlock" x:Key="DefaultTextStyle" >
                 <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
                 <!-- <Setter Property="Foreground" Value="Black"/> -->
@@ -85,10 +85,13 @@
                     <ImageBrush ImageSource="Resources/Search.png"/>
                 </Button.Background>
             </Button>
-            <Button Grid.Column="2" Width="25"
+            <Button x:Name="Refresh" Grid.Column="2" Width="25"
                             TabIndex="4"
-                            Click="SettingsButton_Click"
-                            >...
+                            Click="Refresh_Click"
+                            >
+                <Button.Background>
+                    <ImageBrush ImageSource="Resources/Refresh.png" />
+                </Button.Background>
             </Button>
 
         </Grid>
@@ -121,7 +124,8 @@
             <Grid Grid.Row="0" Grid.Column="1" >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="55"/>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="232*"/>
+                    <ColumnDefinition Width="13*"/>
                 </Grid.ColumnDefinitions>
                 <Label FontWeight="Bold"
                                Focusable="false"
@@ -132,7 +136,7 @@
                                   ItemsSource="{Binding Path=ReturnTypes}"
                                   SelectedItem="{Binding Path=ReturnTypeSearch}"
                                   ToolTip="Filter by extension method Return type"
-                                  TabIndex="2"
+                                  TabIndex="2" Grid.ColumnSpan="2"
                         />
             </Grid>
         </Grid>
@@ -167,15 +171,17 @@
         </Grid>
         <!-- Code Preview -->
         <Grid DockPanel.Dock="Top" VerticalAlignment="Stretch" >
-            <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Auto">
+            <ScrollViewer>
                 <controls:SelectableTextBlock 
                     Text="{Binding Path=CodePreviewText, Mode=OneWay}"
                     x:Name="CodePreview"
-                    TextWrapping="NoWrap"
+                    TextWrapping="WrapWithOverflow"
                     VerticalAlignment="Top"
                     MinHeight="50"
+                    ScrollViewer.VerticalScrollBarVisibility="Auto"
+                    ScrollViewer.HorizontalScrollBarVisibility="Auto"
                 >
-                    </controls:SelectableTextBlock>
+                </controls:SelectableTextBlock>
             </ScrollViewer>
             <Button x:Name="CopyToClipboard" Click="CopyToClipboard_OnClick" 
                     HorizontalAlignment="Right" VerticalAlignment="Top" 

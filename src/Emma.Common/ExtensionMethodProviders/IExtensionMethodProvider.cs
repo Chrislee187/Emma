@@ -6,7 +6,7 @@ namespace Emma.Common.ExtensionMethodProviders
 {
     public interface IExtensionMethodProvider
     {
-        Task<DateTimeOffset> LastUpdated();
-        Task<IEnumerable<ExtensionMethod>> Provide();
+        Task<DateTimeOffset> LastUpdated(bool refresh = false);
+        Task<IEnumerable<ExtensionMethod>> Provide(bool refresh = false);
     }
 }

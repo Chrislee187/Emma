@@ -32,7 +32,6 @@ namespace Emma.XamlControls
 
         private void SearchButton_Click(object sender, RoutedEventArgs e)
         {
-            ShowState();
             ViewModel.Search();
         }
 
@@ -55,10 +54,9 @@ namespace Emma.XamlControls
             }
         }
 
-        private void SettingsButton_Click(object sender, RoutedEventArgs e)
+        private void Refresh_Click(object sender, RoutedEventArgs e)
         {
-            ShowState();
-
+            ViewModel.RePullFromGit();
         }
 
         private void CopyToClipboard_OnClick(object sender, RoutedEventArgs e) => 

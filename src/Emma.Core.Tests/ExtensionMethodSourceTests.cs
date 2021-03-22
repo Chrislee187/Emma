@@ -35,6 +35,7 @@ namespace Emma.Core.Tests
                 _sourceMocker.Build().Object, 
                 _cacheMocker.Build().Object);
 
+            var x = src.Methods;
             _sourceMocker.VerifyProvideWasCalled();
 
             _cacheMocker.VerifySetCache(srcDate, srcMethods);

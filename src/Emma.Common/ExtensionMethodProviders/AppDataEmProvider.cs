@@ -30,26 +30,26 @@ namespace Emma.Common.ExtensionMethodProviders
 
             if (File.Exists(_filename))
             {
-                Init();
+                Init(false);
             }
         }
 
-        public Task<DateTimeOffset> LastUpdated()
+        public Task<DateTimeOffset> LastUpdated(bool refresh = false)
         {
-            Init();
+            Init(refresh);
             return Task.FromResult(_timestamp);
         }
 
-        public Task<IEnumerable<ExtensionMethod>> Provide()
+        public Task<IEnumerable<ExtensionMethod>> Provide(bool refresh = false)
         {
-            Init();
+            Init(refresh);
             return Task.FromResult(_extensionMethods);
         }
 
-        private void Init()
+        private void Init(bool refresh)
         {
             var cacheAvailable = File.Exists(_filename);
-            if (!_initialised && cacheAvailable)
+            if (!_initialised && cacheAvailable || refresh)
             {
                 _timestamp = File.GetLastWriteTimeUtc(_filename);
                 var json = File.ReadAllText(_filename);

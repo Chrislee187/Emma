@@ -33,23 +33,6 @@ namespace Emma.VSIX
         public EmmaMainToolWindowPane()
         {
             this.Caption = "EMMA - Extension Method Manager";
-
-            // This is the user control hosted by the tool window; Note that, even if this class implements IDisposable,
-            // we are not calling Dispose on this object. This is because ToolWindowPane calls Dispose on
-            // the object returned by the Content property.
-
-
-        }
-
-        private OptionPageGrid _options;
-        private OptionPageGrid Options()
-        {            
-            var package = (EmmaPackage)this.Package;
-
-            package.JoinableTaskFactory.RunAsync(async () 
-                => _options = (OptionPageGrid) await package.GetServiceAsync(typeof(OptionPageGrid)));
-
-            return _options; // ?? (OptionPageGrid) package.GetServiceAsync(typeof(OptionPageGrid)).Result;
         }
 
         protected override void Initialize()
@@ -84,6 +67,18 @@ namespace Emma.VSIX
                 MessageBox.Show($"Github repo {repo} not found!");
             }
 
+        }
+
+        private OptionPageGrid _options;
+
+        private OptionPageGrid Options()
+        {            
+            var package = (EmmaPackage)this.Package;
+
+            package.JoinableTaskFactory.RunAsync(async () 
+                => _options = (OptionPageGrid) await package.GetServiceAsync(typeof(OptionPageGrid)));
+
+            return _options; 
         }
     }
 }

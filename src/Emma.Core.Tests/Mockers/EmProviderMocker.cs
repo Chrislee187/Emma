@@ -38,14 +38,14 @@ namespace Emma.Core.Tests.Mockers
 
         private void SetupReturns(DateTimeOffset timestamp, IEnumerable<ExtensionMethod> extensionMethods)
         {
-            _mock.Setup(m => m.LastUpdated())
+            _mock.Setup(m => m.LastUpdated(false))
                 .Returns(Task.FromResult(timestamp));
-            _mock.Setup(m => m.Provide())
+            _mock.Setup(m => m.Provide(false))
                 .Returns(Task.FromResult(extensionMethods));
         }
 
         public void VerifyProvideWasCalled() => 
-            _mock.Verify(m => m.Provide(), Times.Once);
+            _mock.Verify(m => m.Provide(false), Times.Once);
 
         public void VerifySetCache(DateTimeOffset srcDate, IEnumerable<ExtensionMethod> srcMethods) =>
             _mock.Verify(m

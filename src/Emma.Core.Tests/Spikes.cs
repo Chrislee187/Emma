@@ -2,7 +2,6 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Emma.Common;
 using Emma.Common.ExtensionMethodProviders;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
@@ -15,8 +14,7 @@ namespace Emma.Core.Tests
     public class Spikes
     {
         private string _classText;
-
-
+        
         [SetUp]
         public void Setup()
         {
@@ -38,11 +36,6 @@ namespace Emma.Core.Tests
             var p = new GithubCloneEmProvider("https://github.com/chrislee187/methodbrary");
             var ems = await p.Provide();
             Console.WriteLine($"Cloned folder {ems.Count()} methods found");
-
-            var p2 = new GithubApiEmProvider("chrislee187", "methodbrary");
-            var ems2 = await p.Provide();
-            Console.WriteLine($"github API {ems.Count()} methods found");
-
 
         }
         [Test]

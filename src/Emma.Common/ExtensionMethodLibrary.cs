@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Emma.Common.MethodSources;
@@ -28,6 +29,14 @@ namespace Emma.Common
 
         public IEnumerable<ExtensionMethod> Find(ExtensionMethodQuery query) => 
             Methods.Where(query.Match);
+
+        public void Refresh()
+        {
+            foreach (var src in _sources)
+            {
+                src.Refresh();
+            }
+        }
     }
 
     public enum StringMatchMode

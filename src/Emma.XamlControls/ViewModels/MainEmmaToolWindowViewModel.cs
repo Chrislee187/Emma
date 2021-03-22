@@ -139,9 +139,7 @@ namespace Emma.XamlControls.ViewModels
         public void Search()
         {
             _returnTypes = null;
-            // OnPropertyChanged(nameof(ReturnTypes));
             _extendingTypes = null;
-            // OnPropertyChanged(nameof(ExtendingTypes));
             OnPropertyChanged(nameof(Methods));
         }
 
@@ -151,7 +149,12 @@ namespace Emma.XamlControls.ViewModels
             OnPropertyChanged(nameof(SelectedMethod));
             OnPropertyChanged(nameof(CodePreviewText));
         }
-        
+
+        public void RePullFromGit()
+        {
+            _emLibrary.Refresh();
+            OnPropertyChanged(nameof(Methods));
+        }
         public string CodePreviewText
         {
             get
@@ -168,5 +171,6 @@ namespace Emma.XamlControls.ViewModels
                 }
             }
         }
+
     }
 }

@@ -15,14 +15,14 @@ namespace Emma.Common.MethodSources
         private DateTimeOffset _sourceTimestamp;
         private DateTimeOffset _timeStamp;
 
-        private async Task<IEnumerable<ExtensionMethod>> ProvideMethods()
+        private async Task<IEnumerable<ExtensionMethod>> ProvideMethods(bool refresh = false)
         {
             _localTimestamp = await _localEmProvider.LastUpdated();
             _sourceTimestamp = await _originalEmProvider.LastUpdated();
 
-            if (_sourceTimestamp > _localTimestamp)
+            if (_sourceTimestamp > _localTimestamp || refresh)
             {
-                var extensionMethods = (await _originalEmProvider.Provide()).ToList();
+                var extensionMethods = (await _originalEmProvider.Provide(refresh)).ToList();
                 _localEmProvider.SetCache(_sourceTimestamp, extensionMethods);
                 return extensionMethods;
             }
@@ -32,7 +32,13 @@ namespace Emma.Common.MethodSources
         }
 
         public DateTimeOffset LastUpdated => _timeStamp;
-        public IEnumerable<ExtensionMethod> Methods => RunSynchronously(ProvideMethods);
+        public IEnumerable<ExtensionMethod> Methods
+        {
+            get
+            {
+                return Task.Run(async () => await ProvideMethods()).Result;
+            }
+        }
 
         public ExtensionMethodsSource(
             IExtensionMethodProvider originalEmProvider, 
@@ -41,15 +47,12 @@ namespace Emma.Common.MethodSources
             _originalEmProvider = originalEmProvider;
             _localEmProvider = localEmProvider;
 
-            RunSynchronously( ProvideMethods);
+            // RunSynchronously( ProvideMethods);
         }
 
-
-        public enum SourceKind
+        public void Refresh()
         {
-            Binary, SourceCode,
-            Github
+            _originalEmProvider.Provide(true);
         }
     }
-
 }
