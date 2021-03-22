@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -29,6 +30,21 @@ namespace Emma.Common
                 CSharpSyntaxTree.ParseText(sourceCode).GetCompilationUnitRoot().Members, 
                 sourceLocation, 
                 lastUpdated);
+
+        public static async Task<IEnumerable<ExtensionMethod>> Parse(string folder)
+        {
+            return await Task.Run(() =>
+            {
+                var walker = new FolderWalker(folder).Where(f => f.EndsWith(".cs"));
+                var ems = new List<ExtensionMethod>();
+                foreach (var fn in walker)
+                {
+                    ems.AddRange(Parse(File.ReadAllText(fn), fn, new FileInfo(fn).LastWriteTimeUtc));
+                }
+
+                return ems;
+            });
+        }
 
         public static async Task<IEnumerable<ExtensionMethod>> 
             Parse(GhFolder folder) => await ParseGithubFolder(folder);
@@ -70,5 +86,47 @@ namespace Emma.Common
             string sourceLocation,
             DateTimeOffset lastUpdated) => 
                 new MemberSyntaxListExtensionMethods(members, sourceLocation, lastUpdated).ToArray();
+    }
+
+    public class FolderWalker : IEnumerable<string>
+    {
+        private readonly string _root;
+
+        public FolderWalker(string root)
+        {
+            _root = root;
+        }
+
+        
+        public IEnumerator<string> GetEnumerator()
+        {
+            var stk = new Stack<string>();
+            stk.Push(_root);
+
+            while (stk.Any())
+            {
+                var current = stk.Pop();
+                if (Directory.Exists(current))
+                {
+                    foreach (var file in Directory.GetFiles(current))
+                    {
+                        yield return Path.GetFullPath(file);
+                    }
+                    foreach (var dir in Directory.GetDirectories(current))
+                    {
+                        stk.Push(Path.GetFullPath(dir));
+                    }
+                }
+                else
+                {
+                    yield return current;
+                }
+            }
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
     }
 }

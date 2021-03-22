@@ -25,7 +25,7 @@ namespace Emma.WpfTestApp
         private static ExtensionMethodLibrary CreateTestLibrary()
         {
             var src = new ExtensionMethodsSource(
-                new GithubRepoEmProvider("chrislee187", "methodbrary"),
+                new GithubApiEmProvider("chrislee187", "methodbrary"),
                 new AppDataEmProvider("emma", $"github-methodbrary")
             );
 

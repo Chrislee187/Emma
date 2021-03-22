@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:xamlControls="clr-namespace:Emma.XamlControls"
              xmlns:controls="clr-namespace:Emma.XamlControls.Controls"
+             xmlns:common="clr-namespace:Emma.Common;assembly=Emma.Common"
              mc:Ignorable="d" 
              VerticalAlignment="Stretch"
              d:DesignWidth="300"

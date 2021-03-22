@@ -73,25 +73,16 @@ namespace Emma.VSIX
 
     public class OptionPageGrid : DialogPage
     {
-        private string _methodbraryOwner;
-        private string _methodbraryRepo;
+        private string _defaultMethodbrary;
 
-        [Category("Emma")]
-        [DisplayName("Github user")]
-        [Description("Owner the github repository the extension method library")]
-        public string LibraryGithubOwner
-        {
-            get => string.IsNullOrEmpty(_methodbraryOwner) ? "chrislee187" : _methodbraryOwner;
-            set => _methodbraryOwner = value;
-        }
+
         [Category("Emma")]
         [DisplayName("Extension Method library Repo")]
-        [Description("Name of the repository containing the extension  methods.")]
-        public string LibraryRepo
+        [Description("URL of the repository containing the extension methods.")]
+        public string DefaultMethodbraryRepo
         {
-            get => string.IsNullOrEmpty(_methodbraryRepo) ? "methodbrary" : _methodbraryRepo;
-            set => _methodbraryRepo = value;
+            get => string.IsNullOrEmpty(_defaultMethodbrary) ? "http://github.com/chrislee187/methodbrary" : _defaultMethodbrary;
+            set => _defaultMethodbrary = value;
         }
-
     }
 }

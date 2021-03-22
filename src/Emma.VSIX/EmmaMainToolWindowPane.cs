@@ -25,6 +25,8 @@ namespace Emma.VSIX
     [Guid("0dbc2e41-6720-49a1-b05c-2e22aaae9b20")]
     public class EmmaMainToolWindowPane : ToolWindowPane
     {
+        private const string DefaultMethodbrary = "https://github.com/chrislee187/methodbrary";
+
         /// <summary>
         /// Initializes a new instance of the <see cref="EmmaMainToolWindowPane"/> class.
         /// </summary>
@@ -47,7 +49,7 @@ namespace Emma.VSIX
             package.JoinableTaskFactory.RunAsync(async () 
                 => _options = (OptionPageGrid) await package.GetServiceAsync(typeof(OptionPageGrid)));
 
-            return _options ?? (OptionPageGrid) package.GetServiceAsync(typeof(OptionPageGrid)).Result;
+            return _options; // ?? (OptionPageGrid) package.GetServiceAsync(typeof(OptionPageGrid)).Result;
         }
 
         protected override void Initialize()
@@ -56,15 +58,17 @@ namespace Emma.VSIX
 
             var opts = (OptionPageGrid) package.GetServiceAsync(typeof(OptionPageGrid)).Result;
 
-            var owner = string.IsNullOrEmpty(opts.LibraryGithubOwner) ? "chrislee187" : opts.LibraryGithubOwner;
-            var repo = string.IsNullOrEmpty(opts.LibraryRepo) ? "methodbrary" : opts.LibraryRepo;
+            var repo = string.IsNullOrEmpty(opts.DefaultMethodbraryRepo) 
+                ? DefaultMethodbrary : opts.DefaultMethodbraryRepo;
 
-            ExtensionMethodsSource src;
             try
             {
-                src = new ExtensionMethodsSource(
-                    new GithubRepoEmProvider(owner, repo),
-                    new AppDataEmProvider("emma", $"github-methodbrary")
+                var emProvider = new GithubCloneEmProvider(repo);
+                var appDataEmProvider = new AppDataEmProvider("emma", $"default-methodbrary");
+                
+                var src = new ExtensionMethodsSource(
+                    emProvider,
+                    appDataEmProvider
                 );
 
                 var lib = new ExtensionMethodLibrary(src);
@@ -77,7 +81,7 @@ namespace Emma.VSIX
             }
             catch (NotFoundException e)
             {
-                MessageBox.Show($"Github repo {owner}/{repo} not found!");
+                MessageBox.Show($"Github repo {repo} not found!");
             }
 
         }

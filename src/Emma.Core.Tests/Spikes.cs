@@ -1,6 +1,9 @@
 using System;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
+using Emma.Common;
+using Emma.Common.ExtensionMethodProviders;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
@@ -19,7 +22,6 @@ namespace Emma.Core.Tests
         {
             _classText = File.ReadAllText(@"Support/SampleExtensionsClass.cs");
         }
-
         [Test]
         public void Spike()
         {
@@ -28,6 +30,20 @@ namespace Emma.Core.Tests
             model.AddUsing("abc.def.ghh");
 
             Console.WriteLine(model.ToString());
+        }
+
+        [Test]
+        public async Task Spike2()
+        {
+            var p = new GithubCloneEmProvider("https://github.com/chrislee187/methodbrary");
+            var ems = await p.Provide();
+            Console.WriteLine($"Cloned folder {ems.Count()} methods found");
+
+            var p2 = new GithubApiEmProvider("chrislee187", "methodbrary");
+            var ems2 = await p.Provide();
+            Console.WriteLine($"github API {ems.Count()} methods found");
+
+
         }
         [Test]
         public void Should_add_additional_using_statement()

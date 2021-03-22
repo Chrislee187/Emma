@@ -14,7 +14,7 @@ namespace Emma.Common.MethodSources
         public static ExtensionMethodsSource Create(string githubUser, string githubRepo)
         {
             return new ExtensionMethodsSource(
-                new GithubRepoEmProvider(githubUser, githubRepo),
+                new GithubApiEmProvider(githubUser, githubRepo),
                 new AppDataEmProvider("emma", $"github-{githubUser}-{githubRepo}")
             );
         }
