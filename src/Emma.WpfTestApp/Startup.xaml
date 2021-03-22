@@ -1,4 +1,4 @@
-﻿<Page x:Class="Emma.WpfTestApp.Page2"
+﻿<Page x:Class="Emma.WpfTestApp.EmmaHostPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -7,6 +7,8 @@
       mc:Ignorable="d" 
       WindowTitle="Startup"
       x:Name="StartupPage"
+      d:DesignWidth="600"
+      d:DesignHeight="400"
       >
     <!-- WindowWidth="500" WindowHeight="300" -->
 

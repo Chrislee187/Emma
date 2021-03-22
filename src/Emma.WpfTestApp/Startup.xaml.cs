@@ -8,11 +8,11 @@ using Emma.XamlControls.ViewModels;
 namespace Emma.WpfTestApp
 {
     /// <summary>
-    /// Interaction logic for Page2.xaml
+    /// Interaction logic for EmmaHostPage.xaml
     /// </summary>
-    public partial class Page2 : Page
+    public partial class EmmaHostPage : Page
     {
-        public Page2()
+        public EmmaHostPage()
         {
             InitializeComponent();
         }
